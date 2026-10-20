@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { logout } from "../(auth)/login/actions";
+import { DesktopToggle } from "@/components/desktop-toggle";
 
 const links = [
   { href: "/dashboard", label: "Resumen" },
@@ -18,9 +19,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-10 border-b border-neutral-200 bg-white">
         <div className="mx-auto flex max-w-5xl items-center gap-3 px-4 py-3">
           <span className="font-semibold">Asesor Financiero</span>
-          <form action={logout} className="ml-auto">
+          <div className="ml-auto flex items-center gap-4">
+            <DesktopToggle />
+            <form action={logout}>
             <button className="text-sm text-neutral-500 hover:text-neutral-900">Salir</button>
-          </form>
+            </form>
+          </div>
         </div>
         <nav className="mx-auto flex max-w-5xl gap-4 overflow-x-auto px-4 pb-2 text-sm text-neutral-600">
           {links.map((l) => (
