@@ -34,9 +34,9 @@ export function DesktopToggle() {
   return (
     <button
       onClick={toggle}
-      className={`text-sm text-neutral-500 hover:text-neutral-900 ${desktop ? "" : "md:hidden"}`}
+      className="whitespace-nowrap rounded-md border border-neutral-300 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 hover:bg-neutral-100"
     >
-      {desktop ? "Versión móvil" : "Versión de PC"}
+      {desktop ? "📱 Versión móvil" : "🖥️ Versión de PC"}
     </button>
   );
 }
