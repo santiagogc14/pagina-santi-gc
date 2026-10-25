@@ -57,11 +57,19 @@
   </div>
   <img id="img" alt="">
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="grosor" x="0" y="0" width="100%" height="100%">
+      <feMorphology id="morph" operator="erode" radius="1"/>
+    </filter>
+  </svg>
+
   <div id="panel">
     <label><span>Zoom</span><input id="zoom" type="range" min="1" max="5" step="0.01" value="1"></label>
     <label><span>Brillo</span><input id="bright" type="range" min="0.5" max="2" step="0.01" value="1"></label>
-    <label><span>Contraste</span><input id="contrast" type="range" min="0.5" max="3" step="0.01" value="1"></label>
-    <small>Doble toque en la imagen para fijar</small>
+    <label><span>Contraste</span><input id="contrast" type="range" min="0.5" max="10" step="0.01" value="1"></label>
+    <label><span>Grosor</span><input id="thick" type="range" min="0" max="4" step="0.1" value="0"></label>
+    <label><span>Blanco y negro</span><input id="bw" type="checkbox"></label>
+    <small>Arrastra la imagen para moverla · Doble toque para fijar</small>
   </div>
 
 <script>
@@ -71,12 +79,40 @@
   const zoom = document.getElementById('zoom');
   const bright = document.getElementById('bright');
   const contrast = document.getElementById('contrast');
+  const thick = document.getElementById('thick');
+  const bw = document.getElementById('bw');
+  const morph = document.getElementById('morph');
+  let panX = 0, panY = 0;
 
   function apply() {
-    img.style.transform = 'scale(' + zoom.value + ')';
-    img.style.filter = 'brightness(' + bright.value + ') contrast(' + contrast.value + ')';
+    img.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + zoom.value + ')';
+    let f = (bw.checked ? 'grayscale(1) ' : '') +
+            'brightness(' + bright.value + ') contrast(' + contrast.value + ')';
+    if (+thick.value > 0) {
+      morph.setAttribute('radius', thick.value);
+      f += ' url(#grosor)';
+    }
+    img.style.filter = f;
   }
-  [zoom, bright, contrast].forEach(el => el.addEventListener('input', apply));
+  [zoom, bright, contrast, thick, bw].forEach(el => el.addEventListener('input', apply));
+
+  // Mover la imagen con un dedo (solo con la barra abierta)
+  let drag = null, moved = false;
+  document.addEventListener('touchstart', ev => {
+    moved = false;
+    if (ev.touches.length === 1 && !panel.contains(ev.target)) {
+      drag = { x: ev.touches[0].clientX, y: ev.touches[0].clientY };
+    } else drag = null;
+  });
+  document.addEventListener('touchmove', ev => {
+    if (!drag || !document.body.classList.contains('editing') || ev.touches.length !== 1) return;
+    const t = ev.touches[0];
+    const dx = t.clientX - drag.x, dy = t.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 0) moved = true;
+    panX += dx; panY += dy;
+    drag = { x: t.clientX, y: t.clientY };
+    apply();
+  });
 
   file.addEventListener('change', () => {
     const f = file.files[0];
@@ -90,7 +126,7 @@
   let lastTap = 0;
   document.addEventListener('touchend', ev => {
     if (!document.body.classList.contains('ready')) return;
-    if (panel.contains(ev.target)) return;
+    if (panel.contains(ev.target) || moved) { moved = false; return; }
     const now = Date.now();
     if (now - lastTap < 350) {
       document.body.classList.toggle('editing');
