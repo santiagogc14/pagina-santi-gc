@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-fullscreen">
+<title>Calcar</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; width: 100%;
+    background: #000; overflow: hidden;
+    position: fixed; inset: 0;
+    touch-action: none;
+    -webkit-user-select: none; user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+  #pick {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  }
+  #pick label {
+    background: #fff; color: #000; font: 600 20px -apple-system, sans-serif;
+    padding: 18px 28px; border-radius: 14px;
+  }
+  #pick input { display: none; }
+  #img {
+    display: none; position: fixed; inset: 0;
+    width: 100vw; height: 100vh; height: 100dvh;
+    object-fit: contain; background: #000;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  body.ready #pick { display: none; }
+  body.ready #img { display: block; }
+</style>
+</head>
+<body>
+  <div id="pick">
+    <label>Añadir imagen<input id="file" type="file" accept="image/*"></label>
+  </div>
+  <img id="img" alt="">
+
+<script>
+  const file = document.getElementById('file');
+  const img = document.getElementById('img');
+
+  file.addEventListener('change', () => {
+    const f = file.files[0];
+    if (!f) return;
+    img.src = URL.createObjectURL(f);
+    document.body.classList.add('ready');
+    keepAwake();
+  });
+
+  // Bloquear zoom, gestos y desplazamiento
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(e =>
+    document.addEventListener(e, ev => ev.preventDefault()));
+  document.addEventListener('touchmove', ev => {
+    if (document.body.classList.contains('ready') || ev.touches.length > 1) ev.preventDefault();
+  }, { passive: false });
+  document.addEventListener('dblclick', ev => ev.preventDefault());
+  document.addEventListener('contextmenu', ev => ev.preventDefault());
+
+  // Pantalla siempre encendida
+  async function keepAwake() {
+    try { if ('wakeLock' in navigator) await navigator.wakeLock.request('screen'); } catch (e) {}
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && document.body.classList.contains('ready')) keepAwake();
+  });
+</script>
+</body>
+</html>
