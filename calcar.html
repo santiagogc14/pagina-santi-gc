@@ -31,9 +31,24 @@
     object-fit: contain; background: #000;
     pointer-events: none;
     -webkit-user-drag: none;
+    transform-origin: center center;
   }
   body.ready #pick { display: none; }
   body.ready #img { display: block; }
+
+  #panel {
+    display: none; position: fixed; left: 12px; right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    background: rgba(20,20,20,.85); color: #fff;
+    border-radius: 16px; padding: 14px 16px;
+    font: 15px -apple-system, sans-serif;
+    -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  }
+  body.editing #panel { display: block; }
+  #panel label { display: flex; align-items: center; gap: 10px; margin: 8px 0; }
+  #panel span { width: 80px; flex: none; }
+  #panel input[type=range] { flex: 1; touch-action: pan-x; }
+  #panel small { display: block; text-align: center; opacity: .6; margin-top: 6px; }
 </style>
 </head>
 <body>
@@ -42,9 +57,26 @@
   </div>
   <img id="img" alt="">
 
+  <div id="panel">
+    <label><span>Zoom</span><input id="zoom" type="range" min="1" max="5" step="0.01" value="1"></label>
+    <label><span>Brillo</span><input id="bright" type="range" min="0.5" max="2" step="0.01" value="1"></label>
+    <label><span>Contraste</span><input id="contrast" type="range" min="0.5" max="3" step="0.01" value="1"></label>
+    <small>Doble toque en la imagen para fijar</small>
+  </div>
+
 <script>
   const file = document.getElementById('file');
   const img = document.getElementById('img');
+  const panel = document.getElementById('panel');
+  const zoom = document.getElementById('zoom');
+  const bright = document.getElementById('bright');
+  const contrast = document.getElementById('contrast');
+
+  function apply() {
+    img.style.transform = 'scale(' + zoom.value + ')';
+    img.style.filter = 'brightness(' + bright.value + ') contrast(' + contrast.value + ')';
+  }
+  [zoom, bright, contrast].forEach(el => el.addEventListener('input', apply));
 
   file.addEventListener('change', () => {
     const f = file.files[0];
@@ -54,10 +86,25 @@
     keepAwake();
   });
 
-  // Bloquear zoom, gestos y desplazamiento
+  // Doble toque en la imagen: abre/cierra la barra de ajustes
+  let lastTap = 0;
+  document.addEventListener('touchend', ev => {
+    if (!document.body.classList.contains('ready')) return;
+    if (panel.contains(ev.target)) return;
+    const now = Date.now();
+    if (now - lastTap < 350) {
+      document.body.classList.toggle('editing');
+      lastTap = 0;
+    } else {
+      lastTap = now;
+    }
+  });
+
+  // Bloquear zoom del navegador, gestos y desplazamiento
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(e =>
     document.addEventListener(e, ev => ev.preventDefault()));
   document.addEventListener('touchmove', ev => {
+    if (panel.contains(ev.target) && ev.touches.length === 1) return;
     if (document.body.classList.contains('ready') || ev.touches.length > 1) ev.preventDefault();
   }, { passive: false });
   document.addEventListener('dblclick', ev => ev.preventDefault());
