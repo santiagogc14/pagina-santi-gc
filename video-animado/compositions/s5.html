@@ -66,12 +66,12 @@
       tl.to(S + ".hand", { y: -800, duration: 0.2, ease: "power2.out" }, 2.02);
       tl.fromTo(S + ".plus5", { opacity: 0, y: 0, scale: 0.6 }, { opacity: 1, y: -120, scale: 1, duration: 0.35, ease: "power2.out" }, 1.9);
       tl.to(S + ".plus5", { opacity: 0, duration: 0.15 }, 2.2199999999999998);
-      tl.to(S + ".hand", { opacity: 0, duration: 0.2 }, 1.978);
-      tl.to(S + ".btnwrap, " + S + ".tag", { y: -60, opacity: 0, duration: 0.25, ease: "power2.in" }, 1.978);
-      tl.fromTo(S + ".sleep", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 2.178);
-      tl.fromTo(S + ".seg", { x: 0, y: 0, rotation: 0 }, { x: (i) => [-60,-20,25,70][i], y: (i) => [40,-30,50,-20][i], rotation: (i) => [-14,9,-7,16][i], duration: 0.35, ease: "back.out(2)", stagger: 0.06 }, 3.178);
-      tl.to(S + ".seg", { backgroundColor: "#FF4D5A", duration: 0.2, stagger: 0.06 }, 3.178);
-      tl.fromTo(S + ".nodesc", { scale: 0, rotation: -12 }, { scale: 1, rotation: -5, duration: 0.35, ease: "back.out(3)" }, 3.778);
+      tl.to(S + ".hand", { opacity: 0, duration: 0.2 }, 2.444);
+      tl.to(S + ".btnwrap, " + S + ".tag", { y: -60, opacity: 0, duration: 0.25, ease: "power2.in" }, 2.444);
+      tl.fromTo(S + ".sleep", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 2.644);
+      tl.fromTo(S + ".seg", { x: 0, y: 0, rotation: 0 }, { x: (i) => [-60,-20,25,70][i], y: (i) => [40,-30,50,-20][i], rotation: (i) => [-14,9,-7,16][i], duration: 0.35, ease: "back.out(2)", stagger: 0.06 }, 3.244);
+      tl.to(S + ".seg", { backgroundColor: "#FF4D5A", duration: 0.2, stagger: 0.06 }, 3.244);
+      tl.fromTo(S + ".nodesc", { scale: 0, rotation: -12 }, { scale: 1, rotation: -5, duration: 0.35, ease: "back.out(3)" }, 3.544);
 
       window.__timelines["s5"] = tl;
     })();

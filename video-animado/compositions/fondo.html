@@ -24,11 +24,11 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       tl.fromTo(".bg .st", { opacity: 0.25 }, { opacity: 1, duration: 0.9, yoyo: true, repeat: 25, stagger: { each: 0.07, from: "random" }, ease: "sine.inOut" }, 0);
-      tl.fromTo(".bg .dawn", { opacity: 0 }, { opacity: 1, duration: 3.5, ease: "sine.inOut" }, 24.0);
-      tl.to(".bg .stars", { opacity: 0, duration: 3 }, 24.0);
-      tl.fromTo(".bg .sunball", { y: 0 }, { y: -1150, duration: 12, ease: "sine.out" }, 24.0);
-      tl.fromTo(".bg .day", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 41.7);
-      tl.to(".bg .sunball", { y: -1750, scale: 1.4, duration: 0.8, ease: "power2.out" }, 41.7);
+      tl.fromTo(".bg .dawn", { opacity: 0 }, { opacity: 1, duration: 3.5, ease: "sine.inOut" }, 26.225);
+      tl.to(".bg .stars", { opacity: 0, duration: 3 }, 26.225);
+      tl.fromTo(".bg .sunball", { y: 0 }, { y: -1150, duration: 12, ease: "sine.out" }, 26.225);
+      tl.fromTo(".bg .day", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 46.537000000000006);
+      tl.to(".bg .sunball", { y: -1750, scale: 1.4, duration: 0.8, ease: "power2.out" }, 46.537000000000006);
       window.__timelines["fondo"] = tl;
     })();
   </script>

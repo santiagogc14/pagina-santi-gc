@@ -10,13 +10,14 @@ os.makedirs(f"{ROOT}/assets/sfx", exist_ok=True)
 T = json.load(open(f"{ROOT}/assets/timings.json"))
 L = {o["i"]: (o["start"], o["end"]) for o in T}
 LINES = [l.strip() for l in open(f"{ROOT}/guion.txt", encoding="utf-8") if l.strip()]
-TOTAL = 50.0
+TOTAL = round(L[15][1] + 1.6, 2)
 
-# ---------- escenas (inicio absoluto, fin absoluto) ----------
+# ---------- escenas: cada una arranca justo antes de su frase ----------
+def cut(i): return round(L[i][0] - 0.1, 3)
 SC = {
-    "s1": (0.0, 3.2), "s2": (3.2, 6.1), "s3": (6.1, 12.4), "s4": (12.4, 18.8),
-    "s5": (18.8, 24.0), "s6": (24.0, 36.2), "s7": (36.2, 41.75),
-    "s8": (41.75, 44.4), "s9": (44.4, TOTAL),
+    "s1": (0.0, cut(2)), "s2": (cut(2), cut(3)), "s3": (cut(3), cut(5)), "s4": (cut(5), cut(7)),
+    "s5": (cut(7), cut(9)), "s6": (cut(9), cut(13)), "s7": (cut(13), cut(14)),
+    "s8": (cut(14), cut(15)), "s9": (cut(15), TOTAL),
 }
 
 def loc(scene, abs_t):
@@ -318,9 +319,9 @@ for p in presses:
 js += f'''      tl.to(S + ".hand", {{ opacity: 0, duration: 0.2 }}, {t8 - 0.2});
       tl.to(S + ".btnwrap, " + S + ".tag", {{ y: -60, opacity: 0, duration: 0.25, ease: "power2.in" }}, {t8 - 0.2});
       tl.fromTo(S + ".sleep", {{ opacity: 0, y: 60 }}, {{ opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }}, {t8});
-      tl.fromTo(S + ".seg", {{ x: 0, y: 0, rotation: 0 }}, {{ x: (i) => [-60,-20,25,70][i], y: (i) => [40,-30,50,-20][i], rotation: (i) => [-14,9,-7,16][i], duration: 0.35, ease: "back.out(2)", stagger: 0.06 }}, {t8 + 1.0});
-      tl.to(S + ".seg", {{ backgroundColor: "#FF4D5A", duration: 0.2, stagger: 0.06 }}, {t8 + 1.0});
-      tl.fromTo(S + ".nodesc", {{ scale: 0, rotation: -12 }}, {{ scale: 1, rotation: -5, duration: 0.35, ease: "back.out(3)" }}, {t8 + 1.6});
+      tl.fromTo(S + ".seg", {{ x: 0, y: 0, rotation: 0 }}, {{ x: (i) => [-60,-20,25,70][i], y: (i) => [40,-30,50,-20][i], rotation: (i) => [-14,9,-7,16][i], duration: 0.35, ease: "back.out(2)", stagger: 0.06 }}, {t8 + 0.6});
+      tl.to(S + ".seg", {{ backgroundColor: "#FF4D5A", duration: 0.2, stagger: 0.06 }}, {t8 + 0.6});
+      tl.fromTo(S + ".nodesc", {{ scale: 0, rotation: -12 }}, {{ scale: 1, rotation: -5, duration: 0.35, ease: "back.out(3)" }}, {t8 + 0.9});
 '''
 files[sid] = scene(sid, d, '''
     .s5 .btnwrap { position: absolute; left: 190px; top: 560px; width: 700px; height: 560px; }
@@ -488,7 +489,7 @@ files[sid] = scene(sid, d, '''
       tl.fromTo(S + ".word", {{ scale: 1 }}, {{ scale: 1.06, duration: 0.14, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }}, {t_com + 0.95:.3f});
       tl.fromTo(S + ".heart", {{ scale: 0, rotation: -30 }}, {{ scale: 1, rotation: 0, duration: 0.35, ease: "back.out(3)" }}, {t_com + 1.1:.3f});
       tl.fromTo(S + ".heart", {{ scale: 1 }}, {{ scale: 1.15, duration: 0.25, yoyo: true, repeat: 7, ease: "sine.inOut" }}, {t_com + 1.5:.3f});
-      tl.fromTo(S + ".gift", {{ y: 200, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }}, {t_com + 1.5:.3f});
+      tl.fromTo(S + ".gift", {{ y: 200, opacity: 0 }}, {{ y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }}, {t_com + 1.0:.3f});
       tl.fromTo(S + ".leo .leo-head", {{ rotation: -6 }}, {{ rotation: 6, duration: 0.5, yoyo: true, repeat: 7, ease: "sine.inOut" }}, 0.6);
 {blink(".leo", [1.2, 3.3])}
 ''')
@@ -522,11 +523,11 @@ files["fondo"] = f'''<template>
     (function () {{
       const tl = gsap.timeline({{ paused: true }});
       tl.fromTo(".bg .st", {{ opacity: 0.25 }}, {{ opacity: 1, duration: 0.9, yoyo: true, repeat: 25, stagger: {{ each: 0.07, from: "random" }}, ease: "sine.inOut" }}, 0);
-      tl.fromTo(".bg .dawn", {{ opacity: 0 }}, {{ opacity: 1, duration: 3.5, ease: "sine.inOut" }}, 24.0);
-      tl.to(".bg .stars", {{ opacity: 0, duration: 3 }}, 24.0);
-      tl.fromTo(".bg .sunball", {{ y: 0 }}, {{ y: -1150, duration: 12, ease: "sine.out" }}, 24.0);
-      tl.fromTo(".bg .day", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.6, ease: "power2.out" }}, 41.7);
-      tl.to(".bg .sunball", {{ y: -1750, scale: 1.4, duration: 0.8, ease: "power2.out" }}, 41.7);
+      tl.fromTo(".bg .dawn", {{ opacity: 0 }}, {{ opacity: 1, duration: 3.5, ease: "sine.inOut" }}, {SC["s6"][0]});
+      tl.to(".bg .stars", {{ opacity: 0, duration: 3 }}, {SC["s6"][0]});
+      tl.fromTo(".bg .sunball", {{ y: 0 }}, {{ y: -1150, duration: 12, ease: "sine.out" }}, {SC["s6"][0]});
+      tl.fromTo(".bg .day", {{ opacity: 0 }}, {{ opacity: 1, duration: 0.6, ease: "power2.out" }}, {SC["s8"][0] - 0.05});
+      tl.to(".bg .sunball", {{ y: -1750, scale: 1.4, duration: 0.8, ease: "power2.out" }}, {SC["s8"][0] - 0.05});
       window.__timelines["fondo"] = tl;
     }})();
   </script>
@@ -587,10 +588,10 @@ SF = [  # (archivo, inicio absoluto, volumen)
     ("impact-bass-1", L[7][0] - 0.02, 0.55),
     ("click", SC["s5"][0] + 0.55, 0.55), ("click-soft", SC["s5"][0] + 1.05, 0.55), ("click", SC["s5"][0] + 1.5, 0.55), ("click-soft", SC["s5"][0] + 1.9, 0.55),
     ("glitch-1", L[8][0] + 1.0, 0.3),
-    ("whoosh-cinematic", 23.6, 0.45),
+    ("whoosh-cinematic", SC["s6"][0] - 0.4, 0.45),
     ("pop", L[10][0] + 1.4, 0.5), ("pop", L[11][0] + 1.4, 0.5), ("pop", L[12][0] + 1.4, 0.5),
     ("whoosh-short", L[10][0] - 0.1, 0.35), ("whoosh", L[11][0] - 0.1, 0.35), ("whoosh-short", L[12][0] - 0.1, 0.35),
-    ("riser", 30.0, 0.3), ("impact-bass-2", SC["s7"][0] + 2.6, 0.6),
+    ("riser", SC["s7"][0] + 2.6 - 9.0, 0.3), ("impact-bass-2", SC["s7"][0] + 2.6, 0.6),
     ("sparkle", SC["s8"][0] + 0.05, 0.45), ("notification", SC["s8"][0] + 1.0, 0.3),
     ("pop", SC["s9"][0] + 0.2, 0.5), ("typing", SC["s9"][0] + loc("s9", word_time(15, 7)) + 0.25, 0.4),
     ("ping", SC["s9"][0] + loc("s9", word_time(15, 7)) + 1.1, 0.45),
@@ -603,17 +604,17 @@ for k, (f, t, v) in enumerate(SF):
     dur = min(dur, TOTAL - t)
     audio += f'      <audio id="sfx{k}" class="clip" src="assets/sfx/{f}.mp3" data-start="{t:.3f}" data-duration="{dur:.3f}" data-track-index="{11 + k % 7}" data-volume="{v}"></audio>\n'
 
-hosts = '      <div id="fondo" data-composition-id="fondo" data-composition-src="compositions/fondo.html" data-start="0" data-duration="50" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:0"></div>\n'
+hosts = f'      <div id="fondo" data-composition-id="fondo" data-composition-src="compositions/fondo.html" data-start="0" data-duration="{TOTAL}" data-track-index="0" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:0"></div>\n'
 for i, (k, (s, e)) in enumerate(SC.items()):
     hosts += f'      <div id="{k}" data-composition-id="{k}" data-composition-src="compositions/{k}.html" data-start="{s}" data-duration="{e - s:.3f}" data-track-index="{1 + i % 2}" data-track-kind="graphics" data-width="1080" data-height="1920" style="z-index:{2 + i}"></div>\n'
-hosts += '      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="50" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:50"></div>\n'
+hosts += f'      <div id="captions" data-composition-id="captions" data-composition-src="compositions/captions.html" data-start="0" data-duration="{TOTAL}" data-track-index="3" data-track-kind="captions" data-width="1080" data-height="1920" style="z-index:50"></div>\n'
 
 open(f"{ROOT}/index.html", "w", encoding="utf-8").write(f'''<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <script src="assets/gsap.min.js"></script>
     <style>
       * {{ margin: 0; padding: 0; box-sizing: border-box; }}
       html, body {{ margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #070B24; }}

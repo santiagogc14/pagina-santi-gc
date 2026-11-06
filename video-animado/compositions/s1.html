@@ -59,10 +59,10 @@
       tl.fromTo(S + ".zzz", { opacity: 0, y: 20 }, { opacity: 1, y: -40, duration: 1.2, ease: "power1.out" }, 0.3);
       tl.to(S + ".zzz", { opacity: 0, duration: 0.3 }, 1.5);
       tl.fromTo(S + ".t-a .big", { scale: 1 }, { scale: 1.06, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 0.25);
-      tl.to(S + ".t-a", { y: -60, opacity: 0, duration: 0.18, ease: "power3.in" }, 1.624);
-      tl.fromTo(S + ".t-b", { y: 80, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 1.804);
-      tl.to(S + ".clock", { x: -140, y: 40, scale: 0.78, duration: 0.4, ease: "power3.inOut" }, 1.804);
-      tl.fromTo(S + ".moon", { opacity: 0, scale: 0.4, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 1.9040000000000001);
+      tl.to(S + ".t-a", { y: -60, opacity: 0, duration: 0.18, ease: "power3.in" }, 1.32);
+      tl.fromTo(S + ".t-b", { y: 80, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 1.5);
+      tl.to(S + ".clock", { x: -140, y: 40, scale: 0.78, duration: 0.4, ease: "power3.inOut" }, 1.5);
+      tl.fromTo(S + ".moon", { opacity: 0, scale: 0.4, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 1.6);
 
       window.__timelines["s1"] = tl;
     })();
