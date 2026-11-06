@@ -6,3 +6,4 @@ animacion/renders/*.tmp
 animacion/node_modules/
 animacion/renders/*
 !animacion/renders/*.mp4
+animacion/.media/
