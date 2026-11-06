@@ -4,3 +4,5 @@ voz/lista.txt
 animacion/.hyperframes/
 animacion/renders/*.tmp
 animacion/node_modules/
+animacion/renders/*
+!animacion/renders/*.mp4
