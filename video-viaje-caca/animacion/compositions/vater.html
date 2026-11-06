@@ -15,7 +15,7 @@
       opacity: 0; }
     #root .v-stamp span { display: inline-block; border: 14px solid #ff3b3b; padding: 10px 34px; border-radius: 24px; background: rgba(13,39,64,.85); }
   </style>
-  <div id="root" data-composition-id="vater" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="vater" data-width="1080" data-height="1920"><div id="vater-cam" style="position:absolute;inset:0;transform-origin:540px 760px">
     <!-- A: la ola, 6 litros -->
     <div id="v-a" class="v-a">
       <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
@@ -128,7 +128,7 @@
         <div class="v-tag" id="v-tag3" style="left:600px; top:1180px; color:#9ad94a;">OLOR ▴</div>
       </div>
       <div class="v-stamp" id="v-stamp"><span>BLOQUEADO</span></div>
-    </div>
+    </div></div>
   </div>
   <script>
     
@@ -203,6 +203,10 @@ const P = {
     // salida: la cámara baja por el desagüe
     tl.to("#v-stamp", { opacity: 0, duration: 0.15 }, 9.9);
     tl.to("#v-bcam", { y: -1400, filter: "blur(14px)", duration: 0.35, ease: "power3.in" }, 9.95);
+    // cámara: golpes y sacudidas (generado)
+    tl.fromTo("#vater-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 2.827);
+    tl.fromTo("#vater-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.063);
+    tl.fromTo("#vater-cam", { x: -22, y: 12, rotation: -1.2 }, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }, 8.764);
     window.__timelines["vater"] = tl;
   </script>
 </template>

@@ -4,8 +4,8 @@
       background-color: #fff4e0;
       background-image: linear-gradient(#ead9bb 4px, transparent 4px), linear-gradient(90deg, #ead9bb 4px, transparent 4px);
       background-size: 135px 135px; }
-    #root .h-title { position: absolute; left: 0; right: 0; top: 190px; text-align: center;
-      font-family: "Archivo Black", sans-serif; font-size: 128px; line-height: 1; color: #1b1b1b; letter-spacing: -0.02em; }
+    #root .h-title { position: absolute; left: 0; right: 0; top: 178px; text-align: center;
+      font-family: "Archivo Black", sans-serif; font-size: 94px; line-height: 0.98; color: #1b1b1b; letter-spacing: -0.02em; }
     #root .h-title b { color: #ff5a36; font-weight: 400; }
     #root .h-cam { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
     #root .h-clic { position: absolute; left: 640px; top: 360px; font-family: "Archivo Black", sans-serif; font-size: 76px;
@@ -35,7 +35,7 @@
       </svg>
       <div id="h-popo" class="popo" style="left:370px; top:760px;">{{POPO hp}}</div>
     </div>
-    <div class="h-title" id="h-title">¿A DÓNDE <b>VA?</b></div>
+    <div class="h-title" id="h-title">¿A DÓNDE VA<br/><b>TU CACA?</b></div>
     <div class="h-clic" id="h-clic">¡CLIC!</div>
     <svg id="h-wave" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
       <path d="M-200,0 H1040 Q1140,240 1040,480 T1040,960 T1040,1440 T1040,1920 H-200 Z" fill="#4fb8e6"/>
@@ -55,7 +55,7 @@
     // remolino: acelera y la cámara entra en la taza
     tl.fromTo("#h-swirl", { rotation: 0 }, { rotation: 1440, duration: 3.6, ease: "power2.in", svgOrigin: "540 930" }, 0.5);
     tl.to("#h-water", { attr: { rx: 270, ry: 196 }, fill: "#57bfe8", duration: 3.2, ease: "sine.inOut" }, 0.5);
-    tl.fromTo("#h-cam", { scale: 1 }, { scale: 1.32, duration: 3.4, ease: "power2.inOut", transformOrigin: "540px 930px" }, 0.6);
+    tl.fromTo("#h-cam", { scale: 1 }, { scale: 1.1, duration: 3.4, ease: "power2.inOut", transformOrigin: "540px 930px" }, 0.6);
     tl.to("#h-title", { y: -40, opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 3.75);
     tl.to("#h-swirl", { opacity: 0, duration: 0.25 }, 3.9);
     // aparece Popo (línea 2: 4.20)

@@ -9,7 +9,7 @@
     #root .cx-sub { position: absolute; left: 60px; right: 60px; top: 560px; text-align: center; font-size: 52px; line-height: 1.15; color: #fff; opacity: 0; }
     #root .cx-src { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; font-size: 30px; color: #c9a77c; opacity: 0; }
   </style>
-  <div id="root" data-composition-id="climax" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="climax" data-width="1080" data-height="1920"><div id="climax-cam" style="position:absolute;inset:0;transform-origin:540px 760px">
     <div id="cx-a" class="cx-layer">
       <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
         <rect id="cx-sky" x="0" y="0" width="1080" height="1920" fill="#fff4e0"/>
@@ -64,7 +64,7 @@
       <div class="cx-num" id="cx-num"><span style="font-size:90px">HASTA EL</span><br/><span id="cx-pct">0</span>%</div>
       <div class="cx-sub" id="cx-sub">DEL AGUA RESIDUAL DE LATINOAMÉRICA<br/>VUELVE AL RÍO <span style="color:#ff5a36">SIN TRATAR</span></div>
       <div class="cx-src" id="cx-src">FUENTE: BANCO MUNDIAL (2020) · ENTRE EL 60 Y EL 70 %</div>
-    </div>
+    </div></div>
   </div>
   <script>
     
@@ -121,6 +121,9 @@ const P = {
     tl.fromTo("#cx-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.6);
     P.mood(tl, "cx", "frown", 4.6);
     tl.fromTo("#cx-pa", { rotation: 0 }, { rotation: -8, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 2 }, 4.0);
+    // cámara: golpes y sacudidas (generado)
+    tl.fromTo("#climax-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 1.894);
+    tl.fromTo("#climax-cam", { x: -22, y: 12, rotation: -1.2 }, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }, 1.265);
     window.__timelines["climax"] = tl;
   </script>
 </template>

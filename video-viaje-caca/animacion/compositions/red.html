@@ -7,7 +7,7 @@
       -webkit-text-stroke: 16px #1b1b1b; paint-order: stroke fill; opacity: 0; }
     #root .r-label b { color: #ffd23f; font-weight: 400; }
   </style>
-  <div id="root" data-composition-id="red" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="red" data-width="1080" data-height="1920"><div id="red-cam" style="position:absolute;inset:0;transform-origin:540px 760px">
     <!-- A: tubería de casa, gravedad -->
     <div id="r-a" class="r-layer">
       <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
@@ -160,7 +160,7 @@
 </svg></div>
       </div>
       <div class="r-label" id="r-col" style="top:180px; font-size:100px;">EL <b>COLECTOR</b></div>
-    </div>
+    </div></div>
   </div>
   <script>
     
@@ -238,6 +238,9 @@ const P = {
     tl.fromTo("#r-col", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.4);
     // salida: oscurece
     tl.to("#r-c", { filter: "brightness(0.25)", duration: 0.25, ease: "power2.in" }, 11.8);
+    // cámara: golpes y sacudidas (generado)
+    tl.fromTo("#red-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 4.778);
+    tl.fromTo("#red-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 8.516);
     window.__timelines["red"] = tl;
   </script>
 </template>

@@ -127,7 +127,7 @@
     items.forEach(([id]) => tl.set(id, { x: -300, y: -300 }, 0));
     items.forEach(([id, y, t]) => {
       tl.fromTo(id, { x: -150, y: y, rotation: 0 }, { x: 480, rotation: 20, duration: 0.4, ease: "power1.in" }, t);
-      tl.to(id, { x: 220, y: y - 260, rotation: -200, duration: 0.5, ease: "power2.out" }, t + 0.4);
+      tl.to(id, { x: 300, y: y - 110, rotation: -200, duration: 0.5, ease: "power2.out" }, t + 0.4);
       tl.to(id, { y: y + 900, duration: 0.6, ease: "power2.in" }, t + 0.9);
     });
     tl.fromTo("#pl-pb", { x: -300 }, { x: 320, duration: 0.6, ease: "power2.inOut" }, 5.0);

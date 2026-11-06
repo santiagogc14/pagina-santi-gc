@@ -1,0 +1,49 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #root .fx-flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+    #root .fx-trk { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .fx-popo { position: absolute; left: 0; top: 1124px; width: 80px; height: 71px; }
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1080" data-height="1920">
+    <svg id="fx-trk" class="fx-trk" width="1080" height="1920" viewBox="0 0 1080 1920">
+      <rect x="140" y="1172" width="800" height="16" rx="8" fill="#1b1b1b" opacity=".55"/>
+      <rect id="fx-fill" x="140" y="1172" width="800" height="16" rx="8" fill="#ffd23f"/>
+      <g stroke="#1b1b1b" stroke-width="6">
+        <circle id="fx-d0" cx="140" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d1" cx="340" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d2" cx="540" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d3" cx="740" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d4" cx="940" cy="1180" r="16" fill="#fff"/>
+      </g>
+    </svg>
+    <div id="fx-popo" class="fx-popo">{{POPO fxp}}</div>
+    <div id="fx-flash" class="fx-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // barra de progreso del viaje: váter → red → villano → depuradora → río
+    const stops = [[0, 140], [16.342, 340], [28.41, 540], [39.553, 740], [58.205, 940]];
+    gsap.set("#fx-fill", { scaleX: 0, svgOrigin: "140 1180" });
+    gsap.set("#fx-popo", { x: 100 });
+    for (let i = 0; i < stops.length - 1; i++) {
+      const [t0, x0] = stops[i], [t1, x1] = stops[i + 1];
+      tl.fromTo("#fx-popo", { x: x0 - 40 }, { x: x1 - 40, duration: t1 - t0, ease: "none", immediateRender: i === 0 }, t0);
+      tl.fromTo("#fx-fill", { scaleX: (x0 - 140) / 800 }, { scaleX: (x1 - 140) / 800, duration: t1 - t0, ease: "none", svgOrigin: "140 1180", immediateRender: i === 0 }, t0);
+    }
+    stops.forEach(([t], i) => {
+      tl.set(`#fx-d${i}`, { attr: { fill: "#ffd23f" } }, t + 0.01);
+      tl.fromTo(`#fx-d${i}`, { scale: 1.8 }, { scale: 1, duration: 0.35, ease: "back.out(3)", svgOrigin: `${stops[i][1]} 1180`, immediateRender: false }, t + 0.01);
+    });
+    tl.fromTo("#fx-popo", { y: 0 }, { y: -8, duration: 0.23, yoyo: true, repeat: 135, ease: "sine.inOut" }, 4.2);
+    // el tracker aparece tras el gancho y se va en el cierre
+    tl.fromTo(["#fx-trk", "#fx-popo"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.8);
+    tl.to(["#fx-trk", "#fx-popo"], { opacity: 0, duration: 0.25 }, 64.6);
+    // destellos en los cortes de escena
+    [6.036, 8.84, 16.342, 24.86, 28.41, 34.46, 39.553, 45.93, 54.25, 64.834].forEach((t) => {
+      tl.fromTo("#fx-flash", { opacity: 0.75 }, { opacity: 0, duration: 0.18, ease: "power2.out", immediateRender: false }, t);
+    });
+    tl.fromTo("#fx-flash", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    window.__timelines["fx"] = tl;
+  </script>
+</template>

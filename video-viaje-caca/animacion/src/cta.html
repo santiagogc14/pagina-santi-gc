@@ -12,10 +12,10 @@
         <path d="M540,800 L470,0 L610,0 Z"/><path d="M540,800 L1200,380 L1200,540 Z"/><path d="M540,800 L1200,1300 L1100,1400 Z"/>
         <path d="M540,800 L-120,380 L-120,540 Z"/><path d="M540,800 L-120,1300 L-20,1400 Z"/><path d="M540,800 L1060,-60 L1180,40 Z"/><path d="M540,800 L20,-60 L-100,40 Z"/>
       </g>
-      <g id="ct-phone" stroke="#1b1b1b" stroke-width="9">
+      <g transform="translate(-50,70)"><g id="ct-phone" stroke="#1b1b1b" stroke-width="9">
         <rect x="770" y="620" width="130" height="230" rx="22" fill="#2b2f36"/><rect x="786" y="644" width="98" height="170" rx="8" fill="#6ecff0"/>
         <path d="M806,700 q30,-30 60,0 M806,740 h60 M806,770 h40" stroke="#fff" stroke-width="8" stroke-linecap="round" fill="none"/>
-      </g>
+      </g></g>
       <g id="ct-arrow" fill="#ff5a36" stroke="#1b1b1b" stroke-width="10" stroke-linejoin="round">
         <path d="M500,1020 L580,1020 L580,1090 L630,1090 L540,1170 L450,1090 L500,1090 Z"/>
       </g>
@@ -31,7 +31,6 @@
     tl.fromTo("#ct-popo", { y: 700, rotation: -10 }, { y: 0, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, 0.0);
     tl.fromTo("#ct-phone", { opacity: 0, x: 200, rotation: 30 }, { opacity: 1, x: 0, rotation: -8, duration: 0.4, ease: "back.out(2)", svgOrigin: "835 735" }, 0.4);
     P.mood(tl, "ct", "smile", 0.5);
-    tl.to("#ct-ar", { rotation: -50, svgOrigin: "260 222", duration: 0.25, ease: "power2.out" }, 0.45);
     tl.fromTo("#ct-t", { opacity: 0, scale: 1.5, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.25, ease: "expo.out" }, 0.3);
     tl.fromTo("#ct-s", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 1.4);
     // guiño

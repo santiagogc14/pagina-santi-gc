@@ -8,7 +8,7 @@
     #root .vi-yel { color: #ffd23f; }
     #root .vi-flash { position: absolute; inset: 0; background: #ff3b3b; opacity: 0; }
   </style>
-  <div id="root" data-composition-id="villano" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="villano" data-width="1080" data-height="1920"><div id="villano-cam" style="position:absolute;inset:0;transform-origin:540px 760px">
     <div id="vi-flash" class="vi-flash"></div>
     <!-- A + B: el villano y la montaña -->
     <div id="vi-ab" class="vi-layer">
@@ -115,8 +115,8 @@
       </svg>
       <div class="vi-t vi-yel" id="vi-c1" style="top:400px; font-size:96px;">250 METROS</div>
       <div class="vi-t" id="vi-c2" style="top:180px; font-size:150px;"><span id="vi-ton">0</span> T</div>
-      <div class="vi-t" id="vi-c3" style="top:1110px; font-size:44px; color:#c9bb8f; -webkit-text-stroke: 10px #141a13;">LONDRES · 2017</div>
-    </div>
+      <div class="vi-t" id="vi-c3" style="top:335px; font-size:44px; color:#c9bb8f; -webkit-text-stroke: 10px #141a13;">LONDRES · 2017</div>
+    </div></div>
   </div>
   <script>
     
@@ -197,6 +197,11 @@ const P = {
     tl.fromTo("#vi-c1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 9.1);
     tl.fromTo("#vi-bus", { x: -700 }, { x: 0, duration: 0.6, ease: "power3.out" }, 7.6);
     tl.to("#vi-bus", { x: 1100, duration: 0.5, ease: "power3.in" }, 10.6);
+    // cámara: golpes y sacudidas (generado)
+    tl.fromTo("#villano-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 2.825);
+    tl.fromTo("#villano-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.322);
+    tl.fromTo("#villano-cam", { x: -22, y: 12, rotation: -1.2 }, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }, 0.610);
+    tl.fromTo("#villano-cam", { x: -22, y: 12, rotation: -1.2 }, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }, 5.860);
     window.__timelines["villano"] = tl;
   </script>
 </template>

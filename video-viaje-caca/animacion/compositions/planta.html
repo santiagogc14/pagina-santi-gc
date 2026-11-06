@@ -9,7 +9,7 @@
       text-align: center; font-size: 40px; color: #1b1b1b; padding-top: 280px; opacity: 0; }
     #root .pl-card svg { position: absolute; left: 40px; top: 30px; }
   </style>
-  <div id="root" data-composition-id="planta" data-width="1080" data-height="1920">
+  <div id="root" data-composition-id="planta" data-width="1080" data-height="1920"><div id="planta-cam" style="position:absolute;inset:0;transform-origin:540px 760px">
     <!-- A: llega a la depuradora -->
     <div id="pl-a" class="pl-layer">
       <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
@@ -243,7 +243,7 @@
     <path id="pd-sweat" d="M250,96 C240,116 238,128 250,132 C262,128 260,116 250,96 Z" fill="#8FD8FF" stroke="#2C6E91" stroke-width="4" opacity="0"/>
   </g>
 </svg></div>
-    </div>
+    </div></div>
   </div>
   <script>
     
@@ -295,7 +295,7 @@ const P = {
     items.forEach(([id]) => tl.set(id, { x: -300, y: -300 }, 0));
     items.forEach(([id, y, t]) => {
       tl.fromTo(id, { x: -150, y: y, rotation: 0 }, { x: 480, rotation: 20, duration: 0.4, ease: "power1.in" }, t);
-      tl.to(id, { x: 220, y: y - 260, rotation: -200, duration: 0.5, ease: "power2.out" }, t + 0.4);
+      tl.to(id, { x: 300, y: y - 110, rotation: -200, duration: 0.5, ease: "power2.out" }, t + 0.4);
       tl.to(id, { y: y + 900, duration: 0.6, ease: "power2.in" }, t + 0.9);
     });
     tl.fromTo("#pl-pb", { x: -300 }, { x: 320, duration: 0.6, ease: "power2.inOut" }, 5.0);
@@ -339,6 +339,12 @@ const P = {
     tl.fromTo("#pl-pd", { y: 0, rotation: -5 }, { y: 14, rotation: 5, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 5 }, 14.74);
     P.mood(tl, "pd", "smile", 15.2);
     P.wave(tl, "pd", 17.2, 3);
+    // cámara: golpes y sacudidas (generado)
+    tl.fromTo("#planta-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 2.705);
+    tl.fromTo("#planta-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 6.430);
+    tl.fromTo("#planta-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 10.211);
+    tl.fromTo("#planta-cam", { scale: 1.075 }, { scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }, 14.742);
+    tl.fromTo("#planta-cam", { x: -22, y: 12, rotation: -1.2 }, { x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }, 3.067);
     window.__timelines["planta"] = tl;
   </script>
 </template>

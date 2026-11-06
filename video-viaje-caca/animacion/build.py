@@ -91,72 +91,168 @@ def build_scenes():
         print("built", f.name)
 
 
-HIGHLIGHT = re.compile(r"^(seis|ciento|treinta|toneladas|doscientos|cincuenta|metros|cuarenta|mitad|villano|toallitas|sifón|gravedad|depuradora|bacterias|biogás|abono|río|Popo|váter|colector|rejas|kilómetros|Londres|Latinoamérica|olor)$", re.I)
+HIGHLIGHT = re.compile(r"^(seis|litros|ciento|treinta|toneladas|doscientos|cincuenta|metros|cuarenta|mitad|villano|toallitas|sifón|gravedad|depuradora|bacterias|biogás|abono|río|Popo|váter|colector|rejas|kilómetros|Londres|Latinoamérica|olor|bombas|montañas|heroínas|tratar|baño)$", re.I)
+
+# inicio absoluto de cada escena (debe coincidir con index.html)
+SCENES = {"hook": 0, "vater": 6.036, "red": 16.342, "villano": 28.41, "planta": 39.553, "climax": 58.205, "cta": 64.834}
+# sacudidas de cámara en impactos (segundos absolutos)
+SHAKES = [0.36, 4.12, 14.80, 29.02, 34.27, 42.62, 59.47, 64.95]
+
+
+def lines_and_times():
+    lines = (ROOT.parent / "voz" / "guion.txt").read_text().strip().splitlines()
+    times = json.loads((ROOT.parent / "voz" / "tiempos.json").read_text())
+    return lines, times
+
+
+def punch_js(scene):
+    """Golpe de cámara al inicio de cada frase y sacudida en cada impacto."""
+    a = SCENES[scene]
+    names = list(SCENES)
+    b = SCENES[names[names.index(scene) + 1]] if scene != names[-1] else 70
+    _, times = lines_and_times()
+    js = []
+    for tm in times:
+        t = tm["start"] - a
+        if 0.25 < t < b - a - 0.2:
+            js.append(f'tl.fromTo("#{scene}-cam", {{ scale: 1.075 }}, {{ scale: 1, duration: 0.4, ease: "power3.out", immediateRender: false }}, {t:.3f});')
+    for sh in SHAKES:
+        t = sh - a
+        if 0 <= t < b - a:
+            js.append(f'tl.fromTo("#{scene}-cam", {{ x: -22, y: 12, rotation: -1.2 }}, {{ x: 0, y: 0, rotation: 0, duration: 0.45, ease: "elastic.out(1,0.3)", immediateRender: false }}, {t:.3f});')
+    return "\n    ".join(js)
+
+
+def wrap_scene(name, s):
+    s, n1 = re.subn(r'(<div id="root"[^>]*>)', rf'\1<div id="{name}-cam" style="position:absolute;inset:0;transform-origin:540px 760px">', s, count=1)
+    s, n2 = re.subn(r'\n  </div>\n  <script>', '</div>\n  </div>\n  <script>', s, count=1)
+    assert n1 == n2 == 1, name
+    s = s.replace(f'window.__timelines["{name}"] = tl;', "// cámara: golpes y sacudidas (generado)\n    " + punch_js(name) + f'\n    window.__timelines["{name}"] = tl;')
+    return s
+
+
+def build_scenes():
+    for f in sorted(SRC.glob("*.html")):
+        s = f.read_text()
+        s = re.sub(r"\{\{POPO (\w[\w-]*)\}\}", lambda m: popo(m.group(1)), s)
+        s = s.replace("{{POPOJS}}", POPOJS)
+        if f.stem in SCENES:
+            s = wrap_scene(f.stem, s)
+        (OUT / f.name).write_text(s)
+        print("built", f.name)
 
 
 def build_captions():
-    lines = (ROOT.parent / "voz" / "guion.txt").read_text().strip().splitlines()
-    times = json.loads((ROOT.parent / "voz" / "tiempos.json").read_text())
-    groups = []
+    lines, times = lines_and_times()
+    groups = []  # (start, end, [(word, t)])
     for line, tm in zip(lines, times):
         words = line.split()
-        # agrupar: máx 3 palabras, corta tras puntuación
+        weights = [len(w) + (3 if re.search(r"[.,:;]$", w) else 1) for w in words]
+        tot = sum(weights)
+        wt, t = [], tm["start"]
+        for w, k in zip(words, weights):
+            wt.append((w, t)); t += tm["dur"] * k / tot
         chunks, cur = [], []
-        for w in words:
+        for w in wt:
             cur.append(w)
-            if len(cur) == 3 or re.search(r"[.,:;]$", w):
+            if len(cur) == 3 or re.search(r"[.,:;]$", w[0]):
                 chunks.append(cur); cur = []
         if cur:
             chunks.append(cur)
-        total = sum(len(" ".join(c)) + 4 for c in chunks)
-        t = tm["start"]
-        for c in chunks:
-            d = tm["dur"] * (len(" ".join(c)) + 4) / total
-            groups.append((t, t + d, c))
-            t += d
-    html_groups, js = [], []
-    for i, (a, b, c) in enumerate(groups):
-        ws = []
-        for w in c:
+        for i, c in enumerate(chunks):
+            end = chunks[i + 1][0][1] if i + 1 < len(chunks) else tm["start"] + tm["dur"] + 0.12
+            groups.append((c[0][1] - 0.05, end, c))
+    html, G, W = [], [], []
+    for gi, (a, b, c) in enumerate(groups):
+        spans = []
+        for wi, (w, t) in enumerate(c):
             clean = re.sub(r"[^\wáéíóúñÁÉÍÓÚÑ]", "", w)
-            cls = ' class="hl"' if HIGHLIGHT.match(clean) else ""
-            ws.append(f"<span{cls}>{w.upper()}</span>")
-        html_groups.append(f'    <div id="cg-{i}" class="cg">{" ".join(ws)}</div>')
-        js.append(f"[{a:.3f},{b:.3f}]")
+            hl = bool(HIGHLIGHT.match(clean))
+            spans.append(f'<span id="cw-{gi}-{wi}"{" class=\"hl\"" if hl else ""}>{w.upper()}</span>')
+            W.append(f'["#cw-{gi}-{wi}",{t:.3f},{1 if hl else 0}]')
+        html.append(f'    <div id="cg-{gi}" class="cg">{" ".join(spans)}</div>')
+        G.append(f"[{a:.3f},{b:.3f}]")
     out = f'''<template>
   <style>
     #root {{ position: absolute; inset: 0; pointer-events: none; }}
     #root .cg {{
-      position: absolute; left: 0; right: 0; top: 1235px; padding: 0 90px;
-      text-align: center; font-family: "Archivo Black", sans-serif; font-size: 78px; line-height: 1.05;
-      color: #fff; -webkit-text-stroke: 16px #141414; paint-order: stroke fill; letter-spacing: -0.01em;
+      position: absolute; left: 0; right: 0; top: 1225px; padding: 0 70px;
+      text-align: center; font-family: "Archivo Black", sans-serif; font-size: 92px; line-height: 1.04;
+      color: #fff; -webkit-text-stroke: 18px #141414; paint-order: stroke fill; letter-spacing: -0.01em;
       opacity: 0; visibility: hidden; overflow: visible;
     }}
-    #root .cg span {{ display: inline-block; }}
+    #root .cg span {{ display: inline-block; opacity: 0.0; }}
     #root .cg .hl {{ color: #FFD23F; }}
   </style>
   <div id="root" data-composition-id="captions" data-width="1080" data-height="1920">
-{chr(10).join(html_groups)}
+{chr(10).join(html)}
   </div>
   <script>
     const tl = gsap.timeline({{ paused: true }});
-    const T = [{",".join(js)}];
-    T.forEach(([a, b], i) => {{
+    const G = [{",".join(G)}];
+    const W = [{",".join(W)}];
+    G.forEach(([a, b], i) => {{
       const g = `#cg-${{i}}`;
-      tl.set(g, {{ visibility: "visible" }}, a);
-      tl.fromTo(g, {{ opacity: 0, scale: 0.82, y: 18 }}, {{ opacity: 1, scale: 1, y: 0, duration: 0.16, ease: "back.out(2.2)" }}, a);
-      tl.to(g, {{ opacity: 0, duration: 0.06, ease: "power2.in" }}, b - 0.06);
+      tl.set(g, {{ visibility: "visible", opacity: 1 }}, a);
+      tl.to(g, {{ opacity: 0, duration: 0.05 }}, b - 0.05);
       tl.set(g, {{ visibility: "hidden" }}, b);
+    }});
+    // palabra a palabra: aparece con rebote; la palabra activa se agranda
+    W.forEach(([id, t, hl]) => {{
+      tl.fromTo(id, {{ opacity: 0, scale: 0.5, y: 20 }}, {{ opacity: 1, scale: hl ? 1.18 : 1.08, y: 0, duration: 0.12, ease: "back.out(3)" }}, t);
+      tl.to(id, {{ scale: hl ? 1.08 : 1, duration: 0.2, ease: "power2.out" }}, t + 0.18);
     }});
     window.__timelines["captions"] = tl;
   </script>
 </template>
 '''
     (OUT / "captions.html").write_text(out)
-    print("built captions.html", len(groups), "groups")
+    print("built captions.html", len(groups), "groups,", len(W), "words")
+
+
+# ---------- efectos de sonido (tiempo absoluto del evento, archivo, inicio del golpe, volumen) ----------
+SFX = [
+    (0.35, "s02", 0.067, 1.0), (0.50, "s03", 0.314, 0.9), (4.10, "s11", 0.028, 0.8), (5.73, "s07", 0.254, 0.8),
+    (6.04, "s16", 0.067, 0.6), (6.39, "s04", 0.023, 0.7), (6.66, "s04", 0.023, 0.7), (6.93, "s04", 0.023, 0.7),
+    (7.20, "s04", 0.023, 0.7), (7.47, "s04", 0.023, 0.7), (7.74, "s04", 0.023, 0.7), (8.84, "s06", 0.196, 0.8),
+    (10.4, "s14", 0.511, 0.6), (14.80, "s08", 0.03, 1.0), (15.99, "s01", 0.231, 0.8),
+    (17.4, "s06", 0.196, 0.6), (19.89, "s04", 0.023, 0.8), (21.2, "s05", 0.407, 0.6), (24.86, "s07", 0.254, 0.8), (26.74, "s04", 0.023, 0.8),
+    (29.01, "s12", 0.605, 0.8), (29.02, "s08", 0.03, 0.9), (31.9, "s16", 0.067, 0.4), (34.27, "s08", 0.03, 0.9), (34.46, "s01", 0.231, 0.8),
+    (36.0, "s06", 0.196, 0.6), (37.51, "s17", 0.025, 0.7), (39.0, "s06", 0.196, 0.6),
+    (40.65, "s17", 0.025, 0.6), (42.62, "s09", 0.206, 0.7), (43.35, "s11", 0.028, 0.7), (43.9, "s11", 0.028, 0.7), (44.45, "s11", 0.028, 0.7),
+    (45.10, "s04", 0.023, 0.8), (45.93, "s07", 0.254, 0.8), (46.2, "s05", 0.407, 0.5),
+    (50.45, "s13", 0.381, 0.8), (51.9, "s13", 0.381, 0.7), (53.2, "s13", 0.381, 0.7),
+    (54.55, "s04", 0.023, 0.8), (55.15, "s04", 0.023, 0.8), (56.15, "s04", 0.023, 0.8),
+    (58.3, "s17", 0.025, 0.6), (59.47, "s10", 0.104, 1.0), (62.8, "s15", 0.023, 0.8),
+    (64.83, "s07", 0.254, 0.8), (65.13, "s04", 0.023, 0.8), (65.25, "s05", 0.407, 0.5), (66.83, "s17", 0.025, 0.7), (68.03, "s04", 0.023, 0.8),
+]
+TRIM = {"s18": 1.3}
+
+
+def sfx_len(f):
+    import subprocess
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(ROOT / "assets/sfx" / f"{f}.mp3")], capture_output=True, text=True).stdout
+    return float(out) - 0.02
+
+
+def build_index():
+    idx = ROOT / "index.html"
+    s = idx.read_text()
+    s = re.sub(r"\n      <!-- SFX:BEGIN -->.*<!-- SFX:END -->", "", s, flags=re.S)
+    rows = []
+    for i, (t, f, onset, vol) in enumerate(SFX):
+        start = max(0.0, t - onset + 0.033)
+        d = TRIM.get(f) or sfx_len(f)
+        track = 5 + i % 4
+        rows.append(f'      <audio id="fx{i:02d}" class="clip" src="assets/sfx/{f}.mp3" data-start="{start:.3f}" data-duration="{d:.3f}" data-track-index="{track}" data-volume="{vol}"></audio>')
+    block = "\n      <!-- SFX:BEGIN -->\n" + "\n".join(rows) + "\n      <!-- SFX:END -->"
+    s = s.replace('\n    </div>\n    <script>', block + '\n    </div>\n    <script>', 1)
+    idx.write_text(s)
+    print("index: sfx", len(rows))
 
 
 if __name__ == "__main__":
     OUT.mkdir(exist_ok=True)
     build_scenes()
     build_captions()
+    build_index()

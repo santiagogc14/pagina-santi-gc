@@ -1,0 +1,84 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #root .fx-flash { position: absolute; inset: 0; background: #fff; opacity: 0; }
+    #root .fx-trk { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .fx-popo { position: absolute; left: 0; top: 1124px; width: 80px; height: 71px; }
+  </style>
+  <div id="root" data-composition-id="fx" data-width="1080" data-height="1920">
+    <svg id="fx-trk" class="fx-trk" width="1080" height="1920" viewBox="0 0 1080 1920">
+      <rect x="140" y="1172" width="800" height="16" rx="8" fill="#1b1b1b" opacity=".55"/>
+      <rect id="fx-fill" x="140" y="1172" width="800" height="16" rx="8" fill="#ffd23f"/>
+      <g stroke="#1b1b1b" stroke-width="6">
+        <circle id="fx-d0" cx="140" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d1" cx="340" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d2" cx="540" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d3" cx="740" cy="1180" r="16" fill="#fff"/>
+        <circle id="fx-d4" cx="940" cy="1180" r="16" fill="#fff"/>
+      </g>
+    </svg>
+    <div id="fx-popo" class="fx-popo"><svg viewBox="-20 -10 340 300" width="100%" height="100%" overflow="visible">
+  <g id="fxp-b">
+    <g id="fxp-arms" stroke="#3A2312" stroke-width="9" stroke-linecap="round" fill="none">
+      <path id="fxp-al" d="M40,222 L2,192"/>
+      <path id="fxp-ar" d="M260,222 L298,192"/>
+    </g>
+    <g stroke="#3A2312" stroke-width="8" stroke-linejoin="round">
+      <path d="M150,84 C146,52 170,40 190,26 C186,52 196,64 174,86 Z" fill="#7A4C2A"/>
+      <rect x="88" y="76" width="124" height="62" rx="31" fill="#7A4C2A"/>
+      <rect x="52" y="128" width="196" height="72" rx="36" fill="#8A5A35"/>
+      <rect x="22" y="188" width="256" height="74" rx="37" fill="#9A6740"/>
+    </g>
+    <g stroke="#C08A5C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8">
+      <path d="M108,92 Q125,84 140,86"/><path d="M74,146 Q92,138 112,140"/><path d="M44,206 Q62,198 84,200"/>
+    </g>
+    <ellipse cx="96" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <ellipse cx="204" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <g id="fxp-eyes">
+      <ellipse cx="120" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <ellipse cx="180" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <g id="fxp-pup">
+        <circle cx="124" cy="168" r="11" fill="#1B1B1B"/><circle cx="184" cy="168" r="11" fill="#1B1B1B"/>
+        <circle cx="128" cy="163" r="4" fill="#fff"/><circle cx="188" cy="163" r="4" fill="#fff"/>
+      </g>
+    </g>
+    <g id="fxp-brows" opacity="0" stroke="#3A2312" stroke-width="8" stroke-linecap="round">
+      <path d="M98,128 L136,138"/><path d="M202,128 L164,138"/>
+    </g>
+    <g id="fxp-mouths">
+      <path id="fxp-m-smile" d="M120,214 Q150,252 180,214 Z" fill="#3A140A" stroke="#3A2312" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse id="fxp-m-o" cx="150" cy="228" rx="15" ry="20" fill="#3A140A" opacity="0"/>
+      <path id="fxp-m-frown" d="M126,236 Q150,214 174,236" fill="none" stroke="#3A140A" stroke-width="8" stroke-linecap="round" opacity="0"/>
+    </g>
+    <path id="fxp-sweat" d="M250,96 C240,116 238,128 250,132 C262,128 260,116 250,96 Z" fill="#8FD8FF" stroke="#2C6E91" stroke-width="4" opacity="0"/>
+  </g>
+</svg></div>
+    <div id="fx-flash" class="fx-flash"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // barra de progreso del viaje: váter → red → villano → depuradora → río
+    const stops = [[0, 140], [16.342, 340], [28.41, 540], [39.553, 740], [58.205, 940]];
+    gsap.set("#fx-fill", { scaleX: 0, svgOrigin: "140 1180" });
+    gsap.set("#fx-popo", { x: 100 });
+    for (let i = 0; i < stops.length - 1; i++) {
+      const [t0, x0] = stops[i], [t1, x1] = stops[i + 1];
+      tl.fromTo("#fx-popo", { x: x0 - 40 }, { x: x1 - 40, duration: t1 - t0, ease: "none", immediateRender: i === 0 }, t0);
+      tl.fromTo("#fx-fill", { scaleX: (x0 - 140) / 800 }, { scaleX: (x1 - 140) / 800, duration: t1 - t0, ease: "none", svgOrigin: "140 1180", immediateRender: i === 0 }, t0);
+    }
+    stops.forEach(([t], i) => {
+      tl.set(`#fx-d${i}`, { attr: { fill: "#ffd23f" } }, t + 0.01);
+      tl.fromTo(`#fx-d${i}`, { scale: 1.8 }, { scale: 1, duration: 0.35, ease: "back.out(3)", svgOrigin: `${stops[i][1]} 1180`, immediateRender: false }, t + 0.01);
+    });
+    tl.fromTo("#fx-popo", { y: 0 }, { y: -8, duration: 0.23, yoyo: true, repeat: 135, ease: "sine.inOut" }, 4.2);
+    // el tracker aparece tras el gancho y se va en el cierre
+    tl.fromTo(["#fx-trk", "#fx-popo"], { opacity: 0 }, { opacity: 1, duration: 0.3 }, 5.8);
+    tl.to(["#fx-trk", "#fx-popo"], { opacity: 0, duration: 0.25 }, 64.6);
+    // destellos en los cortes de escena
+    [6.036, 8.84, 16.342, 24.86, 28.41, 34.46, 39.553, 45.93, 54.25, 64.834].forEach((t) => {
+      tl.fromTo("#fx-flash", { opacity: 0.75 }, { opacity: 0, duration: 0.18, ease: "power2.out", immediateRender: false }, t);
+    });
+    tl.fromTo("#fx-flash", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    window.__timelines["fx"] = tl;
+  </script>
+</template>
