@@ -1,3 +1,6 @@
 voz/lineas/
 voz/rec/
 voz/lista.txt
+animacion/.hyperframes/
+animacion/renders/*.tmp
+animacion/node_modules/

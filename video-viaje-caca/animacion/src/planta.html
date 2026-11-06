@@ -1,0 +1,176 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #bfe8ff; font-family: "Archivo Black", sans-serif; }
+    #root .pl-layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .popo { position: absolute; width: 340px; height: 300px; }
+    #root .pl-t { position: absolute; left: 0; right: 0; text-align: center; color: #fff; -webkit-text-stroke: 16px #1b1b1b; paint-order: stroke fill; opacity: 0; }
+    #root .pl-t b { color: #ffd23f; font-weight: 400; }
+    #root .pl-card { position: absolute; width: 300px; height: 380px; border: 10px solid #1b1b1b; border-radius: 40px; background: #fff;
+      text-align: center; font-size: 40px; color: #1b1b1b; padding-top: 280px; opacity: 0; }
+    #root .pl-card svg { position: absolute; left: 40px; top: 30px; }
+  </style>
+  <div id="root" data-composition-id="planta" data-width="1080" data-height="1920">
+    <!-- A: llega a la depuradora -->
+    <div id="pl-a" class="pl-layer">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <g id="pl-rays" fill="#ffe680" opacity=".75">
+          <path d="M540,640 L470,-200 L610,-200 Z"/><path d="M540,640 L1300,260 L1300,420 Z"/><path d="M540,640 L1200,1300 L1060,1380 Z"/>
+          <path d="M540,640 L-220,260 L-220,420 Z"/><path d="M540,640 L-120,1300 L20,1380 Z"/><path d="M540,640 L1000,-200 L1150,-120 Z"/><path d="M540,640 L80,-200 L-70,-120 Z"/>
+        </g>
+        <rect x="0" y="900" width="1080" height="1020" fill="#7cc46c"/>
+        <g stroke="#1b1b1b" stroke-width="10" stroke-linejoin="round">
+          <rect x="300" y="470" width="480" height="430" fill="#e8eef2"/>
+          <rect x="250" y="430" width="580" height="70" fill="#3fa7d6"/>
+          <rect x="360" y="560" width="110" height="90" fill="#bfe8ff"/><rect x="610" y="560" width="110" height="90" fill="#bfe8ff"/>
+          <rect x="480" y="720" width="120" height="180" fill="#8a5a35"/>
+          <rect x="700" y="300" width="60" height="140" fill="#c9d3dc"/>
+          <ellipse cx="160" cy="860" rx="120" ry="40" fill="#6ecff0"/><rect x="40" y="760" width="240" height="100" fill="#c9d3dc"/><ellipse cx="160" cy="760" rx="120" ry="40" fill="#6ecff0"/>
+          <ellipse cx="920" cy="860" rx="120" ry="40" fill="#6ecff0"/><rect x="800" y="760" width="240" height="100" fill="#c9d3dc"/><ellipse cx="920" cy="760" rx="120" ry="40" fill="#6ecff0"/>
+        </g>
+        <text x="540" y="482" text-anchor="middle" font-family="Archivo Black" font-size="46" fill="#fff">DEPURADORA</text>
+        <g id="pl-spark" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5">
+          <path d="M260,1000 l12,30 30,12 -30,12 -12,30 -12,-30 -30,-12 30,-12 Z"/>
+          <path d="M840,1040 l9,22 22,9 -22,9 -9,22 -9,-22 -22,-9 22,-9 Z"/>
+        </g>
+      </svg>
+      <div id="pl-pa" class="popo" style="left:370px; top:930px;">{{POPO pa}}</div>
+    </div>
+    <!-- B: las rejas -->
+    <div id="pl-b" class="pl-layer" style="background:#5d7484">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <rect x="0" y="560" width="1080" height="560" fill="#6b5a3e"/>
+        <path d="M0,560 q60,-20 120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 V600 H0 Z" fill="#8a7650"/>
+        <g id="pl-bars" stroke="#1b1b1b" stroke-width="8" fill="#c9d3dc">
+          <rect x="560" y="300" width="34" height="830" rx="10"/><rect x="640" y="300" width="34" height="830" rx="10"/>
+          <rect x="720" y="300" width="34" height="830" rx="10"/><rect x="800" y="300" width="34" height="830" rx="10"/>
+          <rect x="540" y="290" width="314" height="40" rx="10"/>
+        </g>
+        <g id="pl-duck" stroke="#1b1b1b" stroke-width="7">
+          <ellipse cx="0" cy="0" rx="70" ry="48" fill="#ffd23f"/><circle cx="50" cy="-50" r="36" fill="#ffd23f"/>
+          <path d="M80,-52 l34,8 -34,10 Z" fill="#ff8a1f"/><circle cx="58" cy="-58" r="6" fill="#1b1b1b" stroke="none"/>
+        </g>
+        <g id="pl-phone" stroke="#1b1b1b" stroke-width="7">
+          <rect x="-45" y="-80" width="90" height="160" rx="16" fill="#2b2f36"/><rect x="-33" y="-64" width="66" height="118" rx="6" fill="#6ecff0"/>
+        </g>
+        <g id="pl-wip" stroke="#1b1b1b" stroke-width="7">
+          <rect x="-60" y="-60" width="120" height="120" rx="16" fill="#f4f8fb"/><circle cx="-30" cy="-30" r="8" fill="#9fd8ef" stroke="none"/><circle cx="30" cy="30" r="8" fill="#9fd8ef" stroke="none"/>
+        </g>
+      </svg>
+      <div id="pl-pb" class="popo" style="left:0; top:640px; width:240px; height:212px;">{{POPO pb}}</div>
+      <div class="pl-t" id="pl-tb" style="top:190px; font-size:110px;">LAS <b>REJAS</b></div>
+    </div>
+    <!-- C: el tanque y las bacterias -->
+    <div id="pl-c" class="pl-layer" style="background:#e8eef2">
+      <div id="pl-ccam" class="pl-layer">
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+          <defs>
+            <linearGradient id="pl-wg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ecff0"/><stop offset="1" stop-color="#3fa7d6"/></linearGradient>
+            <clipPath id="pl-tclip"><rect x="120" y="330" width="840" height="780" rx="20"/></clipPath>
+          </defs>
+          <rect x="120" y="330" width="840" height="780" rx="20" fill="url(#pl-wg)"/>
+          <rect id="pl-murk" x="120" y="330" width="840" height="780" rx="20" fill="#7a5a32"/>
+          <g clip-path="url(#pl-tclip)">
+            <path id="pl-sludge" d="M120,1110 L120,1010 q70,-30 140,0 t140,0 t140,0 t140,0 t140,0 t140,0 V1110 Z" fill="#5a3b20"/>
+            <g id="pl-parts" fill="#5a3b20">
+              <circle cx="240" cy="560" r="14"/><circle cx="380" cy="470" r="10"/><circle cx="720" cy="520" r="16"/><circle cx="860" cy="640" r="11"/>
+              <circle cx="300" cy="760" r="12"/><circle cx="640" cy="700" r="9"/><circle cx="820" cy="420" r="13"/><circle cx="460" cy="620" r="10"/>
+            </g>
+            <g id="pl-bugs">
+              <g class="pl-bug"><g transform="translate(250,980)"><rect x="-70" y="-38" width="140" height="76" rx="38" fill="#7fdc5a" stroke="#1b1b1b" stroke-width="7"/><circle cx="-20" cy="-8" r="10" fill="#1b1b1b"/><circle cx="20" cy="-8" r="10" fill="#1b1b1b"/><path class="pl-jaw" d="M-24,14 Q0,40 24,14 Z" fill="#1b1b1b"/></g></g>
+              <g class="pl-bug"><g transform="translate(830,990) scale(-1,1)"><rect x="-70" y="-38" width="140" height="76" rx="38" fill="#a8e86a" stroke="#1b1b1b" stroke-width="7"/><circle cx="-20" cy="-8" r="10" fill="#1b1b1b"/><circle cx="20" cy="-8" r="10" fill="#1b1b1b"/><path class="pl-jaw" d="M-24,14 Q0,40 24,14 Z" fill="#1b1b1b"/></g></g>
+              <g class="pl-bug"><g transform="translate(380,880) rotate(-20)"><rect x="-56" y="-30" width="112" height="60" rx="30" fill="#5ed08a" stroke="#1b1b1b" stroke-width="7"/><circle cx="-16" cy="-6" r="8" fill="#1b1b1b"/><circle cx="16" cy="-6" r="8" fill="#1b1b1b"/><path class="pl-jaw" d="M-18,10 Q0,30 18,10 Z" fill="#1b1b1b"/></g></g>
+              <g class="pl-bug"><g transform="translate(700,870) rotate(16)"><rect x="-56" y="-30" width="112" height="60" rx="30" fill="#7fdc5a" stroke="#1b1b1b" stroke-width="7"/><circle cx="-16" cy="-6" r="8" fill="#1b1b1b"/><circle cx="16" cy="-6" r="8" fill="#1b1b1b"/><path class="pl-jaw" d="M-18,10 Q0,30 18,10 Z" fill="#1b1b1b"/></g></g>
+              <g class="pl-bug"><g transform="translate(560,1060)"><rect x="-56" y="-30" width="112" height="60" rx="30" fill="#a8e86a" stroke="#1b1b1b" stroke-width="7"/><circle cx="-16" cy="-6" r="8" fill="#1b1b1b"/><circle cx="16" cy="-6" r="8" fill="#1b1b1b"/><path class="pl-jaw" d="M-18,10 Q0,30 18,10 Z" fill="#1b1b1b"/></g></g>
+            </g>
+          </g>
+          <rect x="120" y="330" width="840" height="780" rx="20" fill="none" stroke="#1b1b1b" stroke-width="12"/>
+        </svg>
+        <div id="pl-pc" class="popo" style="left:430px; top:300px; width:220px; height:194px;">{{POPO pc}}</div>
+      </div>
+      <div class="pl-t" id="pl-tc" style="top:170px; font-size:84px;">TODO <b>AL FONDO</b></div>
+      <div class="pl-t" id="pl-tc2" style="top:170px; font-size:84px;">¡A <b>COMER</b>!</div>
+    </div>
+    <!-- D: biogás, abono, agua limpia -->
+    <div id="pl-d" class="pl-layer" style="background:#fff4e0">
+      <div class="pl-card" id="pl-k1" style="left:30px; top:330px;">
+        <svg width="200" height="240" viewBox="0 0 200 240"><path d="M100,20 C140,80 180,110 170,170 C162,215 130,230 100,230 C70,230 38,215 30,170 C22,120 70,110 70,60 C88,80 92,95 100,20 Z" fill="#ff8a1f" stroke="#1b1b1b" stroke-width="9" stroke-linejoin="round"/><path d="M100,110 C120,140 140,160 130,190 C124,210 76,210 70,190 C64,165 90,150 100,110 Z" fill="#ffd23f"/></svg>BIOGÁS</div>
+      <div class="pl-card" id="pl-k2" style="left:390px; top:330px;">
+        <svg width="200" height="240" viewBox="0 0 200 240"><path d="M100,210 L100,110" stroke="#2f8a3a" stroke-width="12" stroke-linecap="round"/><path d="M100,130 C60,130 40,100 40,70 C80,70 100,90 100,130 Z M100,110 C140,110 165,80 165,45 C125,45 100,70 100,110 Z" fill="#6db35a" stroke="#1b1b1b" stroke-width="8" stroke-linejoin="round"/><path d="M30,205 Q100,170 170,205 L170,225 L30,225 Z" fill="#7a4c2a" stroke="#1b1b1b" stroke-width="8"/></svg>ABONO</div>
+      <div class="pl-card" id="pl-k3" style="left:750px; top:330px;">
+        <svg width="200" height="240" viewBox="0 0 200 240"><path d="M100,30 C130,80 160,110 160,150 C160,190 132,215 100,215 C68,215 40,190 40,150 C40,110 70,80 100,30 Z" fill="#6ecff0" stroke="#1b1b1b" stroke-width="9" stroke-linejoin="round"/><path d="M70,150 Q72,180 98,186" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round"/></svg>AGUA<br/>AL RÍO</div>
+      <svg width="1080" height="400" viewBox="0 0 1080 400" style="position:absolute;left:0;top:780px">
+        <path id="pl-river" d="M-40,260 C200,140 380,330 560,220 C760,100 900,260 1120,180 L1120,420 L-40,420 Z" fill="#3fa7d6" stroke="#1b1b1b" stroke-width="10"/>
+        <path id="pl-rwave" d="M40,300 q40,-18 80,0 t80,0 M520,290 q40,-18 80,0 t80,0 M860,300 q40,-18 80,0 t80,0" fill="none" stroke="#bfe8ff" stroke-width="10" stroke-linecap="round"/>
+      </svg>
+      <div id="pl-pd" class="popo" style="left:420px; top:900px; width:240px; height:212px;">{{POPO pd}}</div>
+    </div>
+  </div>
+  <script>
+    {{POPOJS}}
+    const tl = gsap.timeline({ paused: true });
+    gsap.set(["#pl-b", "#pl-c", "#pl-d"], { opacity: 0 });
+    // --- A (0 – 2.6): llega a la depuradora
+    tl.fromTo("#pl-rays", { rotation: 0 }, { rotation: 30, duration: 2.7, ease: "none", svgOrigin: "540 640" }, 0);
+    tl.fromTo("#pl-pa", { x: -700, y: 120 }, { x: 0, y: 0, duration: 0.7, ease: "power3.out" }, 0.05);
+    P.mood(tl, "pa", "smile", 0.6);
+    P.look(tl, "pa", 0, -10, 0.8);
+    tl.fromTo("#pl-spark", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(3)", transformOrigin: "50% 50%" }, 1.1);
+    P.blink(tl, "pa", 1.7);
+    tl.fromTo("#pl-pa", { scaleY: 1 }, { scaleY: 0.85, duration: 0.12, yoyo: true, repeat: 1, transformOrigin: "50% 100%" }, 1.95);
+    // --- B (2.7 – 6.3): las rejas
+    tl.to("#pl-b", { opacity: 1, duration: 0.01 }, 2.65);
+    tl.to("#pl-a", { opacity: 0, duration: 0.01 }, 2.67);
+    tl.fromTo("#pl-bars", { y: -1000 }, { y: 0, duration: 0.35, ease: "power4.in" }, 2.7);
+    tl.fromTo("#pl-b", { y: 0 }, { y: 12, duration: 0.05, yoyo: true, repeat: 3 }, 3.05);
+    tl.fromTo("#pl-tb", { opacity: 0, scale: 1.4 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.in" }, 3.0);
+    const items = [["#pl-duck", 680, 3.4], ["#pl-phone", 820, 3.95], ["#pl-wip", 600, 4.5]];
+    items.forEach(([id]) => tl.set(id, { x: -300, y: -300 }, 0));
+    items.forEach(([id, y, t]) => {
+      tl.fromTo(id, { x: -150, y: y, rotation: 0 }, { x: 480, rotation: 20, duration: 0.4, ease: "power1.in" }, t);
+      tl.to(id, { x: 220, y: y - 260, rotation: -200, duration: 0.5, ease: "power2.out" }, t + 0.4);
+      tl.to(id, { y: y + 900, duration: 0.6, ease: "power2.in" }, t + 0.9);
+    });
+    tl.fromTo("#pl-pb", { x: -300 }, { x: 320, duration: 0.6, ease: "power2.inOut" }, 5.0);
+    tl.to("#pl-pb", { scaleX: 0.35, duration: 0.12, transformOrigin: "50% 50%" }, 5.55);
+    tl.to("#pl-pb", { x: 900, duration: 0.4, ease: "power2.in" }, 5.6);
+    tl.to("#pl-pb", { scaleX: 1, duration: 0.3, ease: "elastic.out(1,0.4)", transformOrigin: "50% 50%" }, 5.75);
+    P.mood(tl, "pb", "o", 5.4);
+    // --- C (6.43 – 14.6): tanque, Popo se hunde, bacterias
+    tl.to("#pl-c", { opacity: 1, duration: 0.01 }, 6.38);
+    tl.to("#pl-b", { opacity: 0, duration: 0.01 }, 6.75);
+    tl.fromTo("#pl-c", { y: 1920 }, { y: 0, duration: 0.35, ease: "expo.out" }, 6.38);
+    gsap.set("#pl-bugs", { opacity: 0 });
+    tl.fromTo("#pl-tc", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 6.7);
+    P.mood(tl, "pc", "smile", 6.6);
+    tl.fromTo("#pl-pc", { y: 0, rotation: 0 }, { y: 600, rotation: 18, duration: 3.4, ease: "sine.inOut" }, 6.6);
+    tl.fromTo("#pl-parts", { y: 0 }, { y: 420, duration: 3.2, ease: "power1.in" }, 6.7);
+    tl.fromTo("#pl-murk", { opacity: 0.85 }, { opacity: 0, duration: 3.2, ease: "power1.inOut" }, 6.8);
+    // bacterias
+    tl.to("#pl-tc", { opacity: 0, duration: 0.15 }, 10.1);
+    tl.fromTo("#pl-tc2", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.25);
+    tl.to("#pl-bugs", { opacity: 1, duration: 0.01 }, 10.2);
+    document.querySelectorAll("#root .pl-bug").forEach((b, i) => {
+      tl.fromTo(b, { x: (i % 2 ? 600 : -600), y: 80 }, { x: 0, y: 0, duration: 0.5, ease: "back.out(1.5)" }, 10.25 + i * 0.12);
+    });
+    document.querySelectorAll("#root .pl-jaw").forEach((j, i) => {
+      tl.fromTo(j, { scaleY: 1 }, { scaleY: 0.1, duration: 0.12, yoyo: true, repeat: 15, transformOrigin: "50% 0%" }, 10.9 + i * 0.05);
+    });
+    tl.to("#pl-ccam", { scale: 1.3, duration: 3.6, ease: "power1.inOut", transformOrigin: "540px 1000px" }, 10.4);
+    tl.to("#pl-sludge", { y: 90, duration: 3.4, ease: "power1.in" }, 11.0);
+    P.mood(tl, "pc", "o", 11.0);
+    P.sweat(tl, "pc", 11.3);
+    tl.to("#pl-pc", { y: 640, scale: 0.6, opacity: 0, duration: 1.0, ease: "power2.in" }, 13.4);
+    // --- D (14.74 – 18.65): biogás, abono, agua limpia
+    tl.to("#pl-d", { opacity: 1, duration: 0.01 }, 14.7);
+    tl.to("#pl-c", { opacity: 0, duration: 0.01 }, 14.72);
+    tl.fromTo("#pl-d", { scale: 1.15, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 14.7);
+    tl.fromTo("#pl-k1", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 15.0);
+    tl.fromTo("#pl-k2", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 15.6);
+    tl.fromTo("#pl-k3", { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 16.6);
+    tl.fromTo("#pl-rwave", { x: 0 }, { x: 120, duration: 3.9, ease: "none" }, 14.74);
+    tl.fromTo("#pl-pd", { y: 0, rotation: -5 }, { y: 14, rotation: 5, duration: 0.55, ease: "sine.inOut", yoyo: true, repeat: 5 }, 14.74);
+    P.mood(tl, "pd", "smile", 15.2);
+    P.wave(tl, "pd", 17.2, 3);
+    window.__timelines["planta"] = tl;
+  </script>
+</template>

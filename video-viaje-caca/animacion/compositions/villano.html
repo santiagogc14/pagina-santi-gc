@@ -1,0 +1,202 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: radial-gradient(circle at 50% 38%, #2f3a2b 0%, #141a13 62%); font-family: "Archivo Black", sans-serif; }
+    #root .vi-layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .popo { position: absolute; width: 340px; height: 300px; }
+    #root .vi-t { position: absolute; left: 0; right: 0; text-align: center; color: #fff; -webkit-text-stroke: 16px #1b1b1b; paint-order: stroke fill; opacity: 0; }
+    #root .vi-red { color: #ff3b3b; }
+    #root .vi-yel { color: #ffd23f; }
+    #root .vi-flash { position: absolute; inset: 0; background: #ff3b3b; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="villano" data-width="1080" data-height="1920">
+    <div id="vi-flash" class="vi-flash"></div>
+    <!-- A + B: el villano y la montaña -->
+    <div id="vi-ab" class="vi-layer">
+      <div id="vi-world" class="vi-layer">
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+          <!-- monstruo de grasa -->
+          <g id="vi-mon">
+            <path d="M200,1040 C120,900 170,640 300,560 C330,420 520,380 600,470 C720,400 900,500 880,660 C980,760 960,980 860,1040 Z" fill="#c9bb8f" stroke="#1b1b1b" stroke-width="12" stroke-linejoin="round"/>
+            <g fill="#a99b6c"><circle cx="330" cy="700" r="30"/><circle cx="760" cy="620" r="24"/><circle cx="690" cy="900" r="36"/><circle cx="300" cy="930" r="22"/></g>
+            <g id="vi-blobs">
+              <ellipse class="vi-blob" cx="280" cy="620" rx="60" ry="40" fill="#ffd94a" stroke="#1b1b1b" stroke-width="8"/>
+              <ellipse class="vi-blob" cx="820" cy="760" rx="55" ry="38" fill="#ffd94a" stroke="#1b1b1b" stroke-width="8"/>
+              <ellipse class="vi-blob" cx="560" cy="460" rx="50" ry="34" fill="#ffd94a" stroke="#1b1b1b" stroke-width="8"/>
+              <ellipse class="vi-blob" cx="250" cy="900" rx="50" ry="34" fill="#ffd94a" stroke="#1b1b1b" stroke-width="8"/>
+              <rect class="vi-blob" x="700" y="500" width="120" height="120" rx="16" fill="#f4f8fb" stroke="#1b1b1b" stroke-width="8" transform="rotate(18 760 560)"/>
+              <rect class="vi-blob" x="240" y="740" width="120" height="120" rx="16" fill="#f4f8fb" stroke="#1b1b1b" stroke-width="8" transform="rotate(-14 300 800)"/>
+              <rect class="vi-blob" x="720" y="860" width="110" height="110" rx="16" fill="#f4f8fb" stroke="#1b1b1b" stroke-width="8" transform="rotate(-24 775 915)"/>
+            </g>
+            <g id="vi-meyes">
+              <ellipse cx="420" cy="600" rx="44" ry="50" fill="#fff" stroke="#1b1b1b" stroke-width="8"/>
+              <ellipse cx="660" cy="600" rx="44" ry="50" fill="#fff" stroke="#1b1b1b" stroke-width="8"/>
+              <circle cx="430" cy="614" r="18" fill="#c4161c"/><circle cx="650" cy="614" r="18" fill="#c4161c"/>
+              <path d="M360,540 L470,580 M720,540 L610,580" stroke="#1b1b1b" stroke-width="16" stroke-linecap="round"/>
+            </g>
+          </g>
+          <!-- la toallita -->
+          <g id="vi-wipe">
+            <path d="M400,620 q35,-22 70,0 t70,0 t70,0 t70,0 q22,35 0,70 t0,70 t0,70 t0,70 q-35,22 -70,0 t-70,0 t-70,0 t-70,0 q-22,-35 0,-70 t0,-70 t0,-70 t0,-70 Z" fill="#f4f8fb" stroke="#1b1b1b" stroke-width="10" stroke-linejoin="round"/>
+            <g fill="#9fd8ef"><circle cx="440" cy="670" r="9"/><circle cx="640" cy="670" r="9"/><circle cx="440" cy="870" r="9"/><circle cx="640" cy="870" r="9"/></g>
+            <ellipse cx="490" cy="740" rx="26" ry="22" fill="#fff" stroke="#1b1b1b" stroke-width="7"/>
+            <ellipse cx="590" cy="740" rx="26" ry="22" fill="#fff" stroke="#1b1b1b" stroke-width="7"/>
+            <circle cx="496" cy="746" r="11" fill="#1b1b1b"/><circle cx="584" cy="746" r="11" fill="#1b1b1b"/>
+            <path d="M455,700 L520,725 M625,700 L560,725" stroke="#1b1b1b" stroke-width="12" stroke-linecap="round"/>
+            <path d="M480,810 Q540,860 610,800 Q545,830 480,810 Z" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="6" stroke-linejoin="round"/>
+          </g>
+          <g id="vi-drops" fill="#6ecff0" stroke="#2c6e91" stroke-width="5">
+            <path d="M470,400 c-14,24 -16,40 0,44 c16,-4 14,-20 0,-44 Z"/>
+            <path d="M600,330 c-14,24 -16,40 0,44 c16,-4 14,-20 0,-44 Z"/>
+            <path d="M540,250 c-14,24 -16,40 0,44 c16,-4 14,-20 0,-44 Z"/>
+          </g>
+        </svg>
+      </div>
+      <div id="vi-pa" class="popo" style="left:30px; top:900px; width:220px; height:194px;"><svg viewBox="-20 -10 340 300" width="100%" height="100%" overflow="visible">
+  <g id="via-b">
+    <g id="via-arms" stroke="#3A2312" stroke-width="9" stroke-linecap="round" fill="none">
+      <path id="via-al" d="M40,222 L2,192"/>
+      <path id="via-ar" d="M260,222 L298,192"/>
+    </g>
+    <g stroke="#3A2312" stroke-width="8" stroke-linejoin="round">
+      <path d="M150,84 C146,52 170,40 190,26 C186,52 196,64 174,86 Z" fill="#7A4C2A"/>
+      <rect x="88" y="76" width="124" height="62" rx="31" fill="#7A4C2A"/>
+      <rect x="52" y="128" width="196" height="72" rx="36" fill="#8A5A35"/>
+      <rect x="22" y="188" width="256" height="74" rx="37" fill="#9A6740"/>
+    </g>
+    <g stroke="#C08A5C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8">
+      <path d="M108,92 Q125,84 140,86"/><path d="M74,146 Q92,138 112,140"/><path d="M44,206 Q62,198 84,200"/>
+    </g>
+    <ellipse cx="96" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <ellipse cx="204" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <g id="via-eyes">
+      <ellipse cx="120" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <ellipse cx="180" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <g id="via-pup">
+        <circle cx="124" cy="168" r="11" fill="#1B1B1B"/><circle cx="184" cy="168" r="11" fill="#1B1B1B"/>
+        <circle cx="128" cy="163" r="4" fill="#fff"/><circle cx="188" cy="163" r="4" fill="#fff"/>
+      </g>
+    </g>
+    <g id="via-brows" opacity="0" stroke="#3A2312" stroke-width="8" stroke-linecap="round">
+      <path d="M98,128 L136,138"/><path d="M202,128 L164,138"/>
+    </g>
+    <g id="via-mouths">
+      <path id="via-m-smile" d="M120,214 Q150,252 180,214 Z" fill="#3A140A" stroke="#3A2312" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse id="via-m-o" cx="150" cy="228" rx="15" ry="20" fill="#3A140A" opacity="0"/>
+      <path id="via-m-frown" d="M126,236 Q150,214 174,236" fill="none" stroke="#3A140A" stroke-width="8" stroke-linecap="round" opacity="0"/>
+    </g>
+    <path id="via-sweat" d="M250,96 C240,116 238,128 250,132 C262,128 260,116 250,96 Z" fill="#8FD8FF" stroke="#2C6E91" stroke-width="4" opacity="0"/>
+  </g>
+</svg></div>
+      <div class="vi-t vi-red" id="vi-t1" style="top:200px; font-size:120px;">EL VILLANO</div>
+      <div class="vi-t" id="vi-t2" style="top:345px; font-size:70px;">TOALLITAS HÚMEDAS</div>
+      <div class="vi-t vi-yel" id="vi-t3" style="top:200px; font-size:96px;">NO SE DESHACEN</div>
+    </div>
+    <!-- C: Londres -->
+    <div id="vi-c" class="vi-layer" style="background:#141a13">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <rect x="0" y="600" width="1080" height="360" fill="#3a332c"/>
+        <rect x="0" y="590" width="1080" height="20" fill="#8a5235"/><rect x="0" y="950" width="1080" height="20" fill="#8a5235"/>
+        <g id="vi-berg">
+          <path d="M-60,940 C-40,700 100,640 240,660 C320,610 480,620 560,650 C680,600 860,630 940,670 C1060,640 1140,700 1160,940 Z" fill="#c9bb8f" stroke="#1b1b1b" stroke-width="10"/>
+          <g fill="#ffd94a" stroke="#1b1b1b" stroke-width="6"><ellipse cx="150" cy="760" rx="40" ry="26"/><ellipse cx="600" cy="730" rx="44" ry="28"/><ellipse cx="900" cy="800" rx="40" ry="26"/></g>
+          <g fill="#f4f8fb" stroke="#1b1b1b" stroke-width="6"><rect x="330" y="720" width="80" height="80" rx="10" transform="rotate(12 370 760)"/><rect x="740" y="700" width="80" height="80" rx="10" transform="rotate(-16 780 740)"/></g>
+        </g>
+        <!-- autobús -->
+        <g transform="translate(0,-200)"><g id="vi-bus" stroke="#1b1b1b" stroke-width="7" stroke-linejoin="round">
+          <rect x="380" y="1040" width="320" height="190" rx="18" fill="#e3262b"/>
+          <g fill="#cfeaf7"><rect x="400" y="1060" width="60" height="44"/><rect x="474" y="1060" width="60" height="44"/><rect x="548" y="1060" width="60" height="44"/><rect x="622" y="1060" width="60" height="44"/>
+          <rect x="400" y="1130" width="60" height="44"/><rect x="474" y="1130" width="60" height="44"/><rect x="548" y="1130" width="60" height="44"/><rect x="622" y="1130" width="60" height="44"/></g>
+          <circle cx="450" cy="1235" r="26" fill="#1b1b1b"/><circle cx="630" cy="1235" r="26" fill="#1b1b1b"/>
+        </g></g>
+        <!-- cota -->
+        <g id="vi-dim" stroke="#ffd23f" stroke-width="8" stroke-linecap="round" fill="none">
+          <path d="M60,540 L1020,540"/><path d="M60,540 l30,-20 M60,540 l30,20 M1020,540 l-30,-20 M1020,540 l-30,20"/>
+        </g>
+      </svg>
+      <div class="vi-t vi-yel" id="vi-c1" style="top:400px; font-size:96px;">250 METROS</div>
+      <div class="vi-t" id="vi-c2" style="top:180px; font-size:150px;"><span id="vi-ton">0</span> T</div>
+      <div class="vi-t" id="vi-c3" style="top:1110px; font-size:44px; color:#c9bb8f; -webkit-text-stroke: 10px #141a13;">LONDRES · 2017</div>
+    </div>
+  </div>
+  <script>
+    
+const P = {
+  mood(tl, id, mood, t) {
+    const all = ["smile", "o", "frown"];
+    tl.to(`#${id}-b`, { scaleY: 0.86, scaleX: 1.08, duration: 0.07, svgOrigin: "150 262", ease: "power2.in" }, t);
+    all.forEach((m) => tl.set(`#${id}-m-${m}`, { opacity: m === mood ? 1 : 0 }, t + 0.07));
+    tl.set(`#${id}-brows`, { opacity: mood === "smile" ? 0 : 1 }, t + 0.07);
+    tl.to(`#${id}-b`, { scaleY: 1, scaleX: 1, duration: 0.35, svgOrigin: "150 262", ease: "elastic.out(1,0.45)" }, t + 0.07);
+  },
+  blink(tl, id, t) {
+    tl.to(`#${id}-eyes`, { scaleY: 0.08, duration: 0.05, svgOrigin: "150 164" }, t);
+    tl.to(`#${id}-eyes`, { scaleY: 1, duration: 0.08, svgOrigin: "150 164" }, t + 0.09);
+  },
+  look(tl, id, dx, dy, t) {
+    tl.to(`#${id}-pup`, { x: dx, y: dy, duration: 0.15, ease: "power3.out" }, t);
+  },
+  idle(tl, id, t0, t1) {
+    const n = Math.max(1, Math.floor((t1 - t0) / 1.1));
+    tl.to(`#${id}-b`, { scaleY: 1.035, scaleX: 0.98, duration: 0.55, svgOrigin: "150 262", ease: "sine.inOut", yoyo: true, repeat: n * 2 - 1 }, t0);
+  },
+  wave(tl, id, t, times) {
+    tl.to(`#${id}-ar`, { rotation: -35, duration: 0.14, svgOrigin: "260 222", ease: "sine.inOut", yoyo: true, repeat: times * 2 - 1 }, t);
+  },
+  sweat(tl, id, t) {
+    tl.fromTo(`#${id}-sweat`, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2 }, t);
+    tl.to(`#${id}-sweat`, { y: 40, opacity: 0, duration: 0.7, ease: "power2.in" }, t + 0.6);
+  },
+};
+
+    const tl = gsap.timeline({ paused: true });
+    gsap.set("#vi-c", { opacity: 0 });
+    gsap.set("#vi-mon", { scale: 0, opacity: 0, svgOrigin: "540 1040" });
+    gsap.set("#vi-meyes", { opacity: 0 });
+    gsap.set("#vi-drops", { opacity: 0 });
+    // --- A (0 – 2.82): entra el villano
+    tl.fromTo("#vi-wipe", { y: -900, rotation: -20 }, { y: 0, rotation: 0, duration: 0.45, ease: "power4.in", transformOrigin: "50% 50%" }, 0.15);
+    tl.to("#vi-wipe", { scaleY: 0.82, scaleX: 1.12, duration: 0.07, transformOrigin: "50% 100%" }, 0.6);
+    tl.to("#vi-wipe", { scaleY: 1, scaleX: 1, duration: 0.5, ease: "elastic.out(1,0.4)", transformOrigin: "50% 100%" }, 0.67);
+    tl.fromTo("#vi-flash", { opacity: 0.55 }, { opacity: 0, duration: 0.35, ease: "power2.out" }, 0.6);
+    tl.fromTo("#vi-ab", { x: -14 }, { x: 0, duration: 0.3, ease: "elastic.out(1,0.3)" }, 0.6);
+    tl.fromTo("#vi-t1", { opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: 0.2, ease: "power4.in" }, 0.6);
+    tl.fromTo("#vi-t2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 1.55);
+    tl.fromTo("#vi-pa", { x: -260 }, { x: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.9);
+    P.mood(tl, "via", "o", 1.0);
+    P.sweat(tl, "via", 1.4);
+    // --- B (2.82 – 6.32): no se deshacen, se pegan a la grasa
+    tl.to(["#vi-t1", "#vi-t2"], { opacity: 0, duration: 0.15 }, 2.8);
+    tl.fromTo("#vi-t3", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 2.9);
+    tl.to("#vi-drops", { opacity: 1, duration: 0.05 }, 2.95);
+    tl.fromTo("#vi-drops", { y: -200 }, { y: 360, duration: 0.6, ease: "power2.in" }, 2.95);
+    tl.to("#vi-drops", { opacity: 0, duration: 0.1 }, 3.5);
+    tl.fromTo("#vi-wipe", { rotation: 0 }, { rotation: 4, immediateRender: false, duration: 0.08, yoyo: true, repeat: 3, transformOrigin: "50% 50%" }, 3.5);
+    tl.to("#vi-t3", { opacity: 0, duration: 0.15 }, 4.25);
+    tl.to("#vi-mon", { opacity: 1, scale: 0.35, duration: 0.25, ease: "back.out(2)" }, 4.3);
+    tl.to("#vi-mon", { scale: 1, duration: 1.4, ease: "power2.inOut" }, 4.55);
+    document.querySelectorAll("#root .vi-blob").forEach((b, i) => {
+      const dx = (i % 2 ? 1 : -1) * 700, dy = i % 3 === 0 ? -500 : 300;
+      tl.fromTo(b, { x: dx, y: dy, opacity: 0 }, { x: 0, y: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 4.4 + i * 0.16);
+    });
+    tl.to("#vi-wipe", { scale: 0.55, y: 160, duration: 1.2, ease: "power2.inOut", transformOrigin: "50% 50%" }, 4.6);
+    tl.to("#vi-meyes", { opacity: 1, duration: 0.05 }, 5.85);
+    tl.fromTo("#vi-meyes", { scaleY: 0.1 }, { scaleY: 1, duration: 0.25, ease: "back.out(3)", svgOrigin: "540 600" }, 5.85);
+    P.mood(tl, "via", "frown", 5.9);
+    tl.to("#vi-pa", { x: -60, duration: 0.3, ease: "power2.out" }, 5.95);
+    // salida rápida hacia C
+    tl.to("#vi-world", { scale: 0.3, filter: "blur(10px)", duration: 0.3, ease: "power3.in", transformOrigin: "540px 760px" }, 6.05);
+    // --- C (6.32 – 11.14): Londres, 130 t y 250 m
+    tl.to("#vi-c", { opacity: 1, duration: 0.01 }, 6.32);
+    tl.to("#vi-ab", { opacity: 0, duration: 0.01 }, 6.34);
+    tl.fromTo("#vi-berg", { scale: 1.6 }, { scale: 1, duration: 0.6, ease: "expo.out", svgOrigin: "540 800" }, 6.32);
+    tl.fromTo("#vi-c3", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 6.5);
+    tl.fromTo("#vi-c2", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 7.3);
+    const ton = { v: 0 };
+    tl.to(ton, { v: 130, duration: 1.2, ease: "power2.out", onUpdate: () => { document.querySelector("#vi-ton").textContent = Math.round(ton.v); } }, 7.3);
+    tl.fromTo("#vi-dim", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.9);
+    tl.fromTo("#vi-c1", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 9.1);
+    tl.fromTo("#vi-bus", { x: -700 }, { x: 0, duration: 0.6, ease: "power3.out" }, 7.6);
+    tl.to("#vi-bus", { x: 1100, duration: 0.5, ease: "power3.in" }, 10.6);
+    window.__timelines["villano"] = tl;
+  </script>
+</template>

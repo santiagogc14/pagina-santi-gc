@@ -1,0 +1,243 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #c98e5a; font-family: "Archivo Black", sans-serif; }
+    #root .r-layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .popo { position: absolute; width: 340px; height: 300px; }
+    #root .r-label { position: absolute; left: 0; right: 0; text-align: center; font-size: 92px; color: #fff;
+      -webkit-text-stroke: 16px #1b1b1b; paint-order: stroke fill; opacity: 0; }
+    #root .r-label b { color: #ffd23f; font-weight: 400; }
+  </style>
+  <div id="root" data-composition-id="red" data-width="1080" data-height="1920">
+    <!-- A: tubería de casa, gravedad -->
+    <div id="r-a" class="r-layer">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <rect x="0" y="0" width="1080" height="600" fill="#bfe8ff"/>
+        <rect x="0" y="600" width="1080" height="1320" fill="#c98e5a"/>
+        <g fill="#a8713f"><circle cx="120" cy="760" r="14"/><circle cx="820" cy="700" r="10"/><circle cx="260" cy="1100" r="18"/><circle cx="640" cy="1250" r="12"/><circle cx="940" cy="980" r="16"/><circle cx="420" cy="880" r="9"/></g>
+        <rect x="0" y="588" width="1080" height="24" fill="#6db35a"/>
+        <!-- casa -->
+        <g stroke="#1b1b1b" stroke-width="10" stroke-linejoin="round">
+          <rect x="120" y="300" width="380" height="300" fill="#fff4e0"/>
+          <path d="M90,310 L310,150 L530,310 Z" fill="#ff5a36"/>
+          <rect x="190" y="380" width="100" height="100" fill="#bfe8ff"/>
+          <rect x="350" y="440" width="90" height="160" fill="#8a5a35"/>
+        </g>
+        <!-- tubería en pendiente -->
+        <path d="M300,590 L300,700 L1200,1180" fill="none" stroke="#1b1b1b" stroke-width="96" stroke-linejoin="round"/>
+        <path d="M300,590 L300,700 L1200,1180" fill="none" stroke="#9aa8b3" stroke-width="78" stroke-linejoin="round"/>
+        <path d="M300,700 L1200,1180" fill="none" stroke="#c6d1d9" stroke-width="18" transform="translate(0,-18)"/>
+        <g id="r-speed" stroke="#fff" stroke-width="8" stroke-linecap="round" opacity="0">
+          <path d="M0,0 l-120,-64"/><path d="M20,40 l-90,-48"/><path d="M-30,-40 l-80,-42"/>
+        </g>
+      </svg>
+      <div id="r-pa" class="popo" style="left:0; top:0; width:220px; height:194px;"><svg viewBox="-20 -10 340 300" width="100%" height="100%" overflow="visible">
+  <g id="ra-b">
+    <g id="ra-arms" stroke="#3A2312" stroke-width="9" stroke-linecap="round" fill="none">
+      <path id="ra-al" d="M40,222 L2,192"/>
+      <path id="ra-ar" d="M260,222 L298,192"/>
+    </g>
+    <g stroke="#3A2312" stroke-width="8" stroke-linejoin="round">
+      <path d="M150,84 C146,52 170,40 190,26 C186,52 196,64 174,86 Z" fill="#7A4C2A"/>
+      <rect x="88" y="76" width="124" height="62" rx="31" fill="#7A4C2A"/>
+      <rect x="52" y="128" width="196" height="72" rx="36" fill="#8A5A35"/>
+      <rect x="22" y="188" width="256" height="74" rx="37" fill="#9A6740"/>
+    </g>
+    <g stroke="#C08A5C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8">
+      <path d="M108,92 Q125,84 140,86"/><path d="M74,146 Q92,138 112,140"/><path d="M44,206 Q62,198 84,200"/>
+    </g>
+    <ellipse cx="96" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <ellipse cx="204" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <g id="ra-eyes">
+      <ellipse cx="120" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <ellipse cx="180" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <g id="ra-pup">
+        <circle cx="124" cy="168" r="11" fill="#1B1B1B"/><circle cx="184" cy="168" r="11" fill="#1B1B1B"/>
+        <circle cx="128" cy="163" r="4" fill="#fff"/><circle cx="188" cy="163" r="4" fill="#fff"/>
+      </g>
+    </g>
+    <g id="ra-brows" opacity="0" stroke="#3A2312" stroke-width="8" stroke-linecap="round">
+      <path d="M98,128 L136,138"/><path d="M202,128 L164,138"/>
+    </g>
+    <g id="ra-mouths">
+      <path id="ra-m-smile" d="M120,214 Q150,252 180,214 Z" fill="#3A140A" stroke="#3A2312" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse id="ra-m-o" cx="150" cy="228" rx="15" ry="20" fill="#3A140A" opacity="0"/>
+      <path id="ra-m-frown" d="M126,236 Q150,214 174,236" fill="none" stroke="#3A140A" stroke-width="8" stroke-linecap="round" opacity="0"/>
+    </g>
+    <path id="ra-sweat" d="M250,96 C240,116 238,128 250,132 C262,128 260,116 250,96 Z" fill="#8FD8FF" stroke="#2C6E91" stroke-width="4" opacity="0"/>
+  </g>
+</svg></div>
+      <div class="r-label" id="r-grav" style="top:780px;">SOLO <b>GRAVEDAD</b></div>
+    </div>
+    <!-- B: mapa del barrio -->
+    <div id="r-b" class="r-layer" style="background:#8fd18a">
+      <svg id="r-map" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <g stroke="#6e7f8c" stroke-linecap="round" fill="none">
+          <path class="r-pipe" d="M540,180 L540,1300" stroke-width="44"/>
+          <path class="r-pipe" d="M250,320 L540,320"  stroke-width="18"/><path class="r-pipe" d="M830,320 L540,320" stroke-width="18"/>
+          <path class="r-pipe" d="M250,540 L540,540"  stroke-width="18"/><path class="r-pipe" d="M830,540 L540,540" stroke-width="18"/>
+          <path class="r-pipe" d="M250,760 L540,760"  stroke-width="18"/><path class="r-pipe" d="M830,760 L540,760" stroke-width="18"/>
+          <path class="r-pipe" d="M250,980 L540,980"  stroke-width="18"/><path class="r-pipe" d="M830,980 L540,980" stroke-width="18"/>
+        </g>
+        <g id="r-flow" stroke="#7a4c2a" stroke-linecap="round" fill="none" stroke-dasharray="6 38" opacity="0">
+          <path d="M540,180 L540,1300" stroke-width="22"/>
+          <path d="M250,320 L540,320" stroke-width="10"/><path d="M830,320 L540,320" stroke-width="10"/>
+          <path d="M250,540 L540,540" stroke-width="10"/><path d="M830,540 L540,540" stroke-width="10"/>
+          <path d="M250,760 L540,760" stroke-width="10"/><path d="M830,760 L540,760" stroke-width="10"/>
+          <path d="M250,980 L540,980" stroke-width="10"/><path d="M830,980 L540,980" stroke-width="10"/>
+        </g>
+        <g stroke="#1b1b1b" stroke-width="8" stroke-linejoin="round">
+          <g class="r-house"><rect x="110" y="270" width="140" height="100" fill="#fff4e0"/><path d="M100,275 L180,215 L260,275 Z" fill="#ff5a36"/></g>
+          <g class="r-house"><rect x="830" y="270" width="140" height="100" fill="#fff4e0"/><path d="M820,275 L900,215 L980,275 Z" fill="#3fa7d6"/></g>
+          <g class="r-house"><rect x="110" y="490" width="140" height="100" fill="#fff4e0"/><path d="M100,495 L180,435 L260,495 Z" fill="#ffd23f"/></g>
+          <g class="r-house"><rect x="830" y="490" width="140" height="100" fill="#fff4e0"/><path d="M820,495 L900,435 L980,495 Z" fill="#ff5a36"/></g>
+          <g class="r-house"><rect x="110" y="710" width="140" height="100" fill="#fff4e0"/><path d="M100,715 L180,655 L260,715 Z" fill="#3fa7d6"/></g>
+          <g class="r-house"><rect x="830" y="710" width="140" height="100" fill="#fff4e0"/><path d="M820,715 L900,655 L980,715 Z" fill="#ffd23f"/></g>
+          <g class="r-house"><rect x="110" y="930" width="140" height="100" fill="#fff4e0"/><path d="M100,935 L180,875 L260,935 Z" fill="#ff5a36"/></g>
+          <g class="r-house"><rect x="830" y="930" width="140" height="100" fill="#fff4e0"/><path d="M820,935 L900,875 L980,935 Z" fill="#3fa7d6"/></g>
+        </g>
+      </svg>
+      <div class="r-label" id="r-barrio" style="top:1060px; font-size:76px;">TODO EL <b>BARRIO</b></div>
+    </div>
+    <!-- C: el colector -->
+    <div id="r-c" class="r-layer" style="background:#1d1a17">
+      <div id="r-ccam" class="r-layer">
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+          <defs><clipPath id="r-clip"><circle cx="540" cy="700" r="430"/></clipPath></defs>
+          <circle cx="540" cy="700" r="430" fill="#3a332c"/>
+          <g clip-path="url(#r-clip)">
+            <rect x="0" y="1000" width="1080" height="200" fill="#5b6b3a"/>
+            <rect x="100" y="985" width="300" height="30" fill="#6b5f52"/>
+            <path id="r-ripple" d="M380,1010 q40,-14 80,0 t80,0 t80,0 t80,0 t80,0 t80,0" fill="none" stroke="#8ea35a" stroke-width="8"/>
+          </g>
+          <circle cx="540" cy="700" r="460" fill="none" stroke="#8a5235" stroke-width="64" stroke-dasharray="60 8"/>
+          <circle cx="540" cy="700" r="430" fill="none" stroke="#1b1b1b" stroke-width="8"/>
+          <!-- operario -->
+          <g id="r-worker" stroke="#1b1b1b" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
+            <path d="M232,880 L222,985 M268,880 L278,985" stroke-width="22"/>
+            <rect x="205" y="755" width="90" height="135" rx="20" fill="#ff8a1f"/>
+            <rect x="205" y="800" width="90" height="16" fill="#e8f0f5" stroke="none"/>
+            <path id="r-warm" d="M290,780 L330,720" stroke-width="20"/>
+            <circle cx="250" cy="715" r="38" fill="#f2c39a"/>
+            <path d="M206,708 Q250,650 294,708 Z" fill="#ffd23f"/>
+            <rect x="200" y="702" width="100" height="14" rx="6" fill="#ffd23f"/>
+          </g>
+        </svg>
+        <div id="r-pc" class="popo" style="left:520px; top:830px; width:220px; height:194px;"><svg viewBox="-20 -10 340 300" width="100%" height="100%" overflow="visible">
+  <g id="rc-b">
+    <g id="rc-arms" stroke="#3A2312" stroke-width="9" stroke-linecap="round" fill="none">
+      <path id="rc-al" d="M40,222 L2,192"/>
+      <path id="rc-ar" d="M260,222 L298,192"/>
+    </g>
+    <g stroke="#3A2312" stroke-width="8" stroke-linejoin="round">
+      <path d="M150,84 C146,52 170,40 190,26 C186,52 196,64 174,86 Z" fill="#7A4C2A"/>
+      <rect x="88" y="76" width="124" height="62" rx="31" fill="#7A4C2A"/>
+      <rect x="52" y="128" width="196" height="72" rx="36" fill="#8A5A35"/>
+      <rect x="22" y="188" width="256" height="74" rx="37" fill="#9A6740"/>
+    </g>
+    <g stroke="#C08A5C" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8">
+      <path d="M108,92 Q125,84 140,86"/><path d="M74,146 Q92,138 112,140"/><path d="M44,206 Q62,198 84,200"/>
+    </g>
+    <ellipse cx="96" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <ellipse cx="204" cy="212" rx="18" ry="10" fill="#FF8FA3" opacity=".55"/>
+    <g id="rc-eyes">
+      <ellipse cx="120" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <ellipse cx="180" cy="164" rx="24" ry="28" fill="#fff" stroke="#3A2312" stroke-width="6"/>
+      <g id="rc-pup">
+        <circle cx="124" cy="168" r="11" fill="#1B1B1B"/><circle cx="184" cy="168" r="11" fill="#1B1B1B"/>
+        <circle cx="128" cy="163" r="4" fill="#fff"/><circle cx="188" cy="163" r="4" fill="#fff"/>
+      </g>
+    </g>
+    <g id="rc-brows" opacity="0" stroke="#3A2312" stroke-width="8" stroke-linecap="round">
+      <path d="M98,128 L136,138"/><path d="M202,128 L164,138"/>
+    </g>
+    <g id="rc-mouths">
+      <path id="rc-m-smile" d="M120,214 Q150,252 180,214 Z" fill="#3A140A" stroke="#3A2312" stroke-width="5" stroke-linejoin="round"/>
+      <ellipse id="rc-m-o" cx="150" cy="228" rx="15" ry="20" fill="#3A140A" opacity="0"/>
+      <path id="rc-m-frown" d="M126,236 Q150,214 174,236" fill="none" stroke="#3A140A" stroke-width="8" stroke-linecap="round" opacity="0"/>
+    </g>
+    <path id="rc-sweat" d="M250,96 C240,116 238,128 250,132 C262,128 260,116 250,96 Z" fill="#8FD8FF" stroke="#2C6E91" stroke-width="4" opacity="0"/>
+  </g>
+</svg></div>
+      </div>
+      <div class="r-label" id="r-col" style="top:180px; font-size:100px;">EL <b>COLECTOR</b></div>
+    </div>
+  </div>
+  <script>
+    
+const P = {
+  mood(tl, id, mood, t) {
+    const all = ["smile", "o", "frown"];
+    tl.to(`#${id}-b`, { scaleY: 0.86, scaleX: 1.08, duration: 0.07, svgOrigin: "150 262", ease: "power2.in" }, t);
+    all.forEach((m) => tl.set(`#${id}-m-${m}`, { opacity: m === mood ? 1 : 0 }, t + 0.07));
+    tl.set(`#${id}-brows`, { opacity: mood === "smile" ? 0 : 1 }, t + 0.07);
+    tl.to(`#${id}-b`, { scaleY: 1, scaleX: 1, duration: 0.35, svgOrigin: "150 262", ease: "elastic.out(1,0.45)" }, t + 0.07);
+  },
+  blink(tl, id, t) {
+    tl.to(`#${id}-eyes`, { scaleY: 0.08, duration: 0.05, svgOrigin: "150 164" }, t);
+    tl.to(`#${id}-eyes`, { scaleY: 1, duration: 0.08, svgOrigin: "150 164" }, t + 0.09);
+  },
+  look(tl, id, dx, dy, t) {
+    tl.to(`#${id}-pup`, { x: dx, y: dy, duration: 0.15, ease: "power3.out" }, t);
+  },
+  idle(tl, id, t0, t1) {
+    const n = Math.max(1, Math.floor((t1 - t0) / 1.1));
+    tl.to(`#${id}-b`, { scaleY: 1.035, scaleX: 0.98, duration: 0.55, svgOrigin: "150 262", ease: "sine.inOut", yoyo: true, repeat: n * 2 - 1 }, t0);
+  },
+  wave(tl, id, t, times) {
+    tl.to(`#${id}-ar`, { rotation: -35, duration: 0.14, svgOrigin: "260 222", ease: "sine.inOut", yoyo: true, repeat: times * 2 - 1 }, t);
+  },
+  sweat(tl, id, t) {
+    tl.fromTo(`#${id}-sweat`, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.2 }, t);
+    tl.to(`#${id}-sweat`, { y: 40, opacity: 0, duration: 0.7, ease: "power2.in" }, t + 0.6);
+  },
+};
+
+    const tl = gsap.timeline({ paused: true });
+    gsap.set(["#r-b", "#r-c"], { opacity: 0 });
+    // --- A (0 – 4.78): baja por la tubería en pendiente
+    const A = { x: 300, y: 700 }, B = { x: 1180, y: 1170 };
+    const sp = { p: 0 };
+    const placeA = () => {
+      const x = A.x + (B.x - A.x) * sp.p, y = A.y + (B.y - A.y) * sp.p;
+      gsap.set("#r-pa", { x: x - 110, y: y - 170 });
+      gsap.set("#r-speed", { attr: { transform: `translate(${x - 90},${y - 70})` } });
+    };
+    tl.fromTo("#r-pa", { rotation: 28 }, { rotation: 28, duration: 0.01 }, 0);
+    tl.fromTo(sp, { p: -0.02 }, { p: 1, duration: 4.4, ease: "power2.in", onUpdate: placeA, onStart: placeA }, 0.2);
+    tl.fromTo("#r-speed", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.6);
+    P.mood(tl, "ra", "smile", 0.4);
+    P.blink(tl, "ra", 1.4);
+    P.look(tl, "ra", 6, 4, 2.0);
+    tl.fromTo("#r-grav", { opacity: 0, scale: 1.4, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.22, ease: "expo.out" }, 3.55);
+    tl.to("#r-grav", { opacity: 0, duration: 0.15 }, 4.6);
+    // --- B (4.78 – 8.52): el barrio
+    tl.to("#r-b", { opacity: 1, duration: 0.01 }, 4.78);
+    tl.to("#r-a", { opacity: 0, duration: 0.01 }, 4.8);
+    tl.fromTo("#r-map", { scale: 1.9, filter: "blur(12px)" }, { scale: 1.9, filter: "blur(0px)", duration: 0.15, transformOrigin: "180px 320px" }, 4.78);
+    document.querySelectorAll("#root .r-house").forEach((h, i) => {
+      tl.fromTo(h, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.6)", transformOrigin: "50% 100%" }, 4.85 + i * 0.12);
+    });
+    document.querySelectorAll("#root .r-pipe").forEach((p, i) => {
+      const len = p.getTotalLength();
+      tl.fromTo(p, { attr: { "stroke-dasharray": `${len} ${len}`, "stroke-dashoffset": len } }, { attr: { "stroke-dashoffset": 0 }, duration: 0.5, ease: "power2.out" }, 5.0 + i * 0.1);
+    });
+    tl.to("#r-flow", { opacity: 1, duration: 0.2 }, 5.9);
+    tl.fromTo("#r-flow path", { attr: { "stroke-dashoffset": 0 } }, { attr: { "stroke-dashoffset": -440 }, duration: 3.0, ease: "none" }, 5.5);
+    tl.to("#r-map", { scale: 1, duration: 1.6, ease: "power2.inOut", transformOrigin: "180px 320px" }, 6.4);
+    tl.fromTo("#r-barrio", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" }, 7.6);
+    // --- C (8.52 – 12.07): el colector
+    tl.to("#r-c", { opacity: 1, duration: 0.01 }, 8.52);
+    tl.to("#r-b", { opacity: 0, duration: 0.01 }, 8.54);
+    tl.fromTo("#r-ccam", { scale: 2.6 }, { scale: 2.6, duration: 0.01, transformOrigin: "630px 930px" }, 8.52);
+    tl.to("#r-ccam", { scale: 1, duration: 1.7, ease: "power3.inOut", transformOrigin: "630px 930px" }, 8.9);
+    tl.fromTo("#r-pc", { y: 0, rotation: -6 }, { y: 10, rotation: 6, duration: 0.6, ease: "sine.inOut", yoyo: true, repeat: 5 }, 8.52);
+    tl.fromTo("#r-ripple", { x: 0 }, { x: -160, duration: 3.5, ease: "none" }, 8.52);
+    P.mood(tl, "rc", "o", 9.4);
+    P.look(tl, "rc", -10, -6, 9.6);
+    tl.to("#r-warm", { rotation: -30, svgOrigin: "290 780", duration: 0.15, yoyo: true, repeat: 5, ease: "sine.inOut" }, 10.4);
+    tl.fromTo("#r-col", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 10.4);
+    // salida: oscurece
+    tl.to("#r-c", { filter: "brightness(0.25)", duration: 0.25, ease: "power2.in" }, 11.8);
+    window.__timelines["red"] = tl;
+  </script>
+</template>

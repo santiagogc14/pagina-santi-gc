@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #fff4e0; font-family: "Archivo Black", sans-serif; }
+    #root .cx-layer { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .popo { position: absolute; width: 340px; height: 300px; }
+    #root .cx-t { position: absolute; left: 0; right: 0; text-align: center; color: #fff; -webkit-text-stroke: 16px #1b1b1b; paint-order: stroke fill; opacity: 0; }
+    #root .cx-num { position: absolute; left: 0; right: 0; top: 170px; text-align: center; font-size: 210px; line-height: 1; color: #ff5a36;
+      -webkit-text-stroke: 18px #1b1b1b; paint-order: stroke fill; opacity: 0; }
+    #root .cx-sub { position: absolute; left: 60px; right: 60px; top: 560px; text-align: center; font-size: 52px; line-height: 1.15; color: #fff; opacity: 0; }
+    #root .cx-src { position: absolute; left: 0; right: 0; top: 1130px; text-align: center; font-size: 30px; color: #c9a77c; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="climax" data-width="1080" data-height="1920">
+    <div id="cx-a" class="cx-layer">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <rect id="cx-sky" x="0" y="0" width="1080" height="1920" fill="#fff4e0"/>
+        <g id="cx-stars" fill="#ffd23f" stroke="#1b1b1b" stroke-width="5">
+          <path d="M200,520 l12,30 30,12 -30,12 -12,30 -12,-30 -30,-12 30,-12 Z"/>
+          <path d="M880,560 l12,30 30,12 -30,12 -12,30 -12,-30 -30,-12 30,-12 Z"/>
+        </g>
+        <path id="cx-river" d="M-40,1040 C200,920 380,1110 560,1000 C760,880 900,1040 1120,960 L1120,1920 L-40,1920 Z" fill="#3fa7d6" stroke="#1b1b1b" stroke-width="10"/>
+        <g id="cx-fish" opacity="0">
+          <path d="M760,1080 q60,-50 130,0 q-70,50 -130,0 Z" fill="#a9b7c2" stroke="#1b1b1b" stroke-width="7"/>
+          <path d="M890,1080 l40,-30 l0,60 Z" fill="#a9b7c2" stroke="#1b1b1b" stroke-width="7" stroke-linejoin="round"/>
+          <path d="M780,1066 l16,16 M796,1066 l-16,16" stroke="#1b1b1b" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <div id="cx-pa" class="popo" style="left:370px; top:780px;">{{POPO cx}}</div>
+      <div class="cx-t" id="cx-happy" style="top:260px; font-size:120px; color:#ffd23f;">FINAL FELIZ</div>
+      <div class="cx-num" id="cx-num"><span style="font-size:90px">HASTA EL</span><br/><span id="cx-pct">0</span>%</div>
+      <div class="cx-sub" id="cx-sub">DEL AGUA RESIDUAL DE LATINOAMÉRICA<br/>VUELVE AL RÍO <span style="color:#ff5a36">SIN TRATAR</span></div>
+      <div class="cx-src" id="cx-src">FUENTE: BANCO MUNDIAL (2020) · ENTRE EL 60 Y EL 70 %</div>
+    </div>
+  </div>
+  <script>
+    {{POPOJS}}
+    const tl = gsap.timeline({ paused: true });
+    // --- final feliz (0 – 1.9)
+    tl.fromTo("#cx-happy", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 0.05);
+    tl.fromTo("#cx-stars", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)", transformOrigin: "50% 50%" }, 0.15);
+    P.mood(tl, "cx", "smile", 0.1);
+    tl.fromTo("#cx-pa", { y: 0 }, { y: 12, duration: 0.45, yoyo: true, repeat: 2, ease: "sine.inOut" }, 0);
+    // corte en seco: se congela y pierde el color
+    tl.to("#cx-a", { filter: "grayscale(1) contrast(1.1)", duration: 0.08 }, 1.35);
+    tl.to("#cx-happy", { rotation: -6, y: 30, duration: 0.08 }, 1.35);
+    tl.to("#cx-happy", { opacity: 0, y: 200, duration: 0.3, ease: "power3.in" }, 1.7);
+    tl.to("#cx-stars", { opacity: 0, duration: 0.2 }, 1.7);
+    // --- la realidad (1.9 – 6.63)
+    tl.to("#cx-a", { filter: "grayscale(0) contrast(1)", duration: 0.01 }, 1.9);
+    tl.set("#cx-sky", { attr: { fill: "#2a1d14" } }, 1.9);
+    tl.fromTo("#cx-river", { attr: { fill: "#3fa7d6" } }, { attr: { fill: "#6b4a26" }, duration: 1.4, ease: "power1.inOut" }, 1.9);
+    P.mood(tl, "cx", "o", 2.0);
+    P.sweat(tl, "cx", 2.3);
+    tl.fromTo("#cx-num", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2)" }, 2.05);
+    const pct = { v: 0 };
+    tl.to(pct, { v: 70, duration: 1.4, ease: "power2.out", onUpdate: () => { document.querySelector("#cx-pct").textContent = Math.round(pct.v); } }, 2.05);
+    tl.fromTo("#cx-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25 }, 2.6);
+    tl.fromTo("#cx-fish", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.5, ease: "power2.out" }, 3.4);
+    tl.fromTo("#cx-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 3.6);
+    P.mood(tl, "cx", "frown", 4.6);
+    tl.fromTo("#cx-pa", { rotation: 0 }, { rotation: -8, duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 2 }, 4.0);
+    window.__timelines["climax"] = tl;
+  </script>
+</template>

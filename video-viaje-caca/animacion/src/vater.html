@@ -1,0 +1,110 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #4fb8e6; font-family: "Archivo Black", sans-serif; }
+    #root .v-a, #root .v-b { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #root .v-b { background-color: #0d2740;
+      background-image: linear-gradient(rgba(111,227,255,.12) 3px, transparent 3px), linear-gradient(90deg, rgba(111,227,255,.12) 3px, transparent 3px);
+      background-size: 90px 90px; }
+    #root .v-num { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-size: 230px; line-height: 1;
+      color: #fff; -webkit-text-stroke: 18px #12456b; paint-order: stroke fill; }
+    #root .v-num small { font-size: 110px; }
+    #root .v-sub { position: absolute; left: 0; right: 0; top: 440px; text-align: center; font-size: 56px; color: #12456b; }
+    #root .popo { position: absolute; width: 340px; height: 300px; }
+    #root .v-tag { position: absolute; font-size: 54px; color: #6fe3ff; letter-spacing: 0.02em; opacity: 0; }
+    #root .v-stamp { position: absolute; left: 0; right: 0; top: 330px; text-align: center; font-size: 120px; color: #ff3b3b;
+      opacity: 0; }
+    #root .v-stamp span { display: inline-block; border: 14px solid #ff3b3b; padding: 10px 34px; border-radius: 24px; background: rgba(13,39,64,.85); }
+  </style>
+  <div id="root" data-composition-id="vater" data-width="1080" data-height="1920">
+    <!-- A: la ola, 6 litros -->
+    <div id="v-a" class="v-a">
+      <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+        <g id="v-bubbles" fill="none" stroke="#bfeeff" stroke-width="6">
+          <circle cx="150" cy="1100" r="22"/><circle cx="900" cy="1000" r="30"/><circle cx="260" cy="760" r="14"/>
+          <circle cx="820" cy="1180" r="18"/><circle cx="560" cy="1150" r="12"/><circle cx="980" cy="640" r="16"/>
+        </g>
+        <g id="v-bottles" transform="translate(0,110)">
+          <g id="v-bt0"><rect x="125" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="150" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+          <g id="v-bt1"><rect x="265" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="290" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+          <g id="v-bt2"><rect x="405" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="430" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+          <g id="v-bt3"><rect x="579" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="604" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+          <g id="v-bt4"><rect x="719" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="744" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+          <g id="v-bt5"><rect x="859" y="560" width="96" height="160" rx="22" fill="#d8f5ff" stroke="#12456b" stroke-width="8"/><rect x="884" y="530" width="46" height="34" rx="8" fill="#12456b"/></g>
+        </g>
+      </svg>
+      <div class="v-num" id="v-num"><span id="v-count">0</span> <small>LITROS</small></div>
+      <div class="v-sub" id="v-sub">POR CADA DESCARGA</div>
+      <div id="v-pa" class="popo" style="left:370px; top:800px;">{{POPO va}}</div>
+    </div>
+    <!-- B y C: rayos X del sifón -->
+    <div id="v-b" class="v-b">
+      <div id="v-bcam" style="position:absolute;left:0;top:0;width:1080px;height:1920px">
+        <svg width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0">
+          <rect x="130" y="250" width="420" height="44" rx="22" fill="none" stroke="#6fe3ff" stroke-width="8"/>
+          <path d="M300,300 C300,600 420,840 580,840 C700,840 720,610 800,610 C890,610 890,760 890,1920" fill="none" stroke="#6fe3ff" stroke-width="150" stroke-linecap="butt"/>
+          <path d="M300,300 C300,600 420,840 580,840 C700,840 720,610 800,610 C890,610 890,760 890,1920" fill="none" stroke="#0d2740" stroke-width="128" stroke-linecap="butt"/>
+          <path id="v-water" d="M378,640 C420,780 470,840 580,840 C680,840 705,690 740,640" fill="none" stroke="#2fa8e0" stroke-width="128"/>
+          <path d="M300,560 L770,560" stroke="#8fe6ff" stroke-width="5" stroke-dasharray="14 12" opacity=".0"/>
+          <path id="v-route" d="M300,300 C300,600 420,840 580,840 C700,840 720,610 800,610 C890,610 890,760 890,1920" fill="none" stroke="none"/>
+          <g id="v-cloud">
+            <path d="M820,1180 c-40,0 -60,-50 -20,-70 c-10,-50 60,-70 80,-30 c30,-40 100,-10 80,40 c40,10 30,70 -20,60 Z" fill="#9ad94a" stroke="#3e6b12" stroke-width="7"/>
+            <path d="M852,1112 l18,8 M912,1112 l-18,8" stroke="#3e6b12" stroke-width="7" stroke-linecap="round"/>
+            <path d="M862,1145 q20,-14 40,0" fill="none" stroke="#3e6b12" stroke-width="7" stroke-linecap="round"/>
+          </g>
+        </svg>
+        <div id="v-pb" class="popo" style="left:0; top:0; width:170px; height:150px;">{{POPO vb}}</div>
+        <div class="v-tag" id="v-tag1" style="left:620px; top:900px;">◂ EL SIFÓN</div>
+        <div class="v-tag" id="v-tag2" style="left:330px; top:960px; color:#2fa8e0;">TAPÓN DE AGUA ▸</div>
+        <div class="v-tag" id="v-tag3" style="left:600px; top:1180px; color:#9ad94a;">OLOR ▴</div>
+      </div>
+      <div class="v-stamp" id="v-stamp"><span>BLOQUEADO</span></div>
+    </div>
+  </div>
+  <script>
+    {{POPOJS}}
+    const tl = gsap.timeline({ paused: true });
+    // --- A (0 – 2.8): la ola arrastra a Popo
+    gsap.set("#v-b", { opacity: 0 });
+    for (let i = 0; i < 6; i++) tl.fromTo(`#v-bt${i}`, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.3, ease: "back.out(2.5)", svgOrigin: `${173 + [0,140,280,454,594,734][i]} 750` }, 0.35 + i * 0.27);
+    const cnt = { v: 0 };
+    tl.to(cnt, { v: 6, duration: 1.6, ease: "none", onUpdate: () => { document.querySelector("#v-count").textContent = Math.round(cnt.v); } }, 0.35);
+    tl.fromTo("#v-num", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 0.1);
+    tl.fromTo("#v-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0.45);
+    tl.fromTo("#v-pa", { x: -700, rotation: -40 }, { x: 0, rotation: 0, duration: 0.7, ease: "power3.out" }, 0);
+    tl.to("#v-pa", { rotation: 360, duration: 1.4, ease: "power1.inOut" }, 0.7);
+    P.mood(tl, "va", "o", 0.1);
+    tl.fromTo("#v-bubbles", { y: 0 }, { y: -500, duration: 2.8, ease: "none" }, 0);
+    tl.to("#v-pa", { x: 900, rotation: 450, duration: 0.45, ease: "power3.in" }, 2.35);
+    // --- B (2.83 – 6.06): rayos X, Popo baja por el sifón
+    tl.to("#v-b", { opacity: 1, duration: 0.01 }, 2.8);
+    tl.to("#v-a", { opacity: 0, duration: 0.01 }, 2.82);
+    tl.fromTo("#v-bcam", { scale: 1.25, filter: "blur(10px)" }, { scale: 1, filter: "blur(0px)", duration: 0.45, ease: "expo.out", transformOrigin: "540px 700px" }, 2.8);
+    const route = document.querySelector("#v-route");
+    const L = route.getTotalLength();
+    const prog = { p: 0 };
+    const placePopo = () => {
+      const pt = route.getPointAtLength(prog.p * L);
+      gsap.set("#v-pb", { x: pt.x - 85, y: pt.y - 90 });
+    };
+    tl.fromTo(prog, { p: 0 }, { p: 1, duration: 3.1, ease: "sine.inOut", onUpdate: placePopo, onStart: placePopo }, 2.95);
+    tl.fromTo("#v-pb", { rotation: -20 }, { rotation: 380, duration: 3.1, ease: "sine.inOut" }, 2.95);
+    P.mood(tl, "vb", "smile", 3.0);
+    tl.fromTo("#v-tag1", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, 3.6);
+    tl.to("#v-pb", { opacity: 0, duration: 0.15 }, 5.9);
+    // --- C (6.06 – 10.3): el agua bloquea el olor
+    tl.to("#v-tag1", { opacity: 0, duration: 0.15 }, 6.0);
+    tl.to("#v-bcam", { scale: 1.15, y: -60, duration: 0.8, ease: "power2.inOut", transformOrigin: "640px 900px" }, 6.06);
+    tl.fromTo("#v-tag2", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.25, ease: "power3.out" }, 6.5);
+    tl.fromTo("#v-cloud", { y: 260, opacity: 0 }, { y: 120, opacity: 1, duration: 0.4, ease: "power2.out" }, 7.2);
+    tl.fromTo("#v-tag3", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 7.4);
+    tl.to("#v-cloud", { y: -330, duration: 0.8, ease: "power2.in" }, 7.7);
+    tl.to("#v-water", { attr: { "stroke-width": 140 }, duration: 0.08, yoyo: true, repeat: 1 }, 8.5);
+    tl.to("#v-cloud", { y: 160, rotation: 25, svgOrigin: "880 1130", duration: 0.7, ease: "power3.out" }, 8.5);
+    tl.fromTo("#v-stamp", { opacity: 0, scale: 2.2, rotation: -14 }, { opacity: 1, scale: 1, rotation: -8, duration: 0.22, ease: "power4.in" }, 8.55);
+    tl.to("#v-bcam", { x: 8, duration: 0.04, yoyo: true, repeat: 5 }, 8.77);
+    // salida: la cámara baja por el desagüe
+    tl.to("#v-stamp", { opacity: 0, duration: 0.15 }, 9.9);
+    tl.to("#v-bcam", { y: -1400, filter: "blur(14px)", duration: 0.35, ease: "power3.in" }, 9.95);
+    window.__timelines["vater"] = tl;
+  </script>
+</template>
