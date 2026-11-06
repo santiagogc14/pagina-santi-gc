@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s9 { position: absolute; inset: 0; font-family: "Archivo Black", sans-serif; color: #fff; }
+    .s9 svg { overflow: visible; }
+    .s9 .leo .eye, .s9 .leo .leo-head, .s9 .leo .m { transform-box: fill-box; transform-origin: center; }
+    .s9 .tag { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); padding: 18px 46px; border-radius: 999px; font-size: 64px; letter-spacing: 2px; border: 7px solid #1B1B1B; box-shadow: 0 10px 0 #1B1B1B; white-space: nowrap; }
+    .s9 .tag.red { background: #FF4D5A; color: #fff; }
+    .s9 .tag.yellow { background: #FFD23F; color: #1B1B1B; }
+    .s9 .tag.green { background: #3DDC97; color: #1B1B1B; }
+
+    .s9 .leo { position: absolute; left: 70px; top: 700px; width: 380px; height: 475px; }
+    .s9 .bub { position: absolute; left: 80px; top: 360px; width: 920px; }
+    .s9 .bub .box { background: #fff; border: 9px solid #1B1B1B; border-radius: 44px; box-shadow: 0 14px 0 #1B1B1B; padding: 34px 40px; color: #1B1B1B; }
+    .s9 .bub .who { font-family: "Montserrat"; font-weight: 800; font-size: 34px; color: #6B6F85; }
+    .s9 .bub .word { font-size: 150px; line-height: 1.05; color: #1B1B1B; letter-spacing: 2px; }
+    .s9 .bub .word .ch { display: inline-block; }
+    .s9 .bub .tail { position: absolute; left: 120px; bottom: -70px; width: 90px; height: 90px; }
+    .s9 .comenta { position: absolute; left: 0; right: 0; top: 200px; text-align: center; font-size: 96px; color: #FFD23F; -webkit-text-stroke: 16px #1B1B1B; paint-order: stroke fill; }
+    .s9 .heart { position: absolute; left: 800px; top: 700px; width: 150px; height: 150px; }
+    .s9 .gift { position: absolute; left: 520px; top: 960px; width: 440px; padding: 22px 0; text-align: center; background: #3DDC97; color: #1B1B1B; font-size: 48px; border: 8px solid #1B1B1B; border-radius: 28px; box-shadow: 0 10px 0 #1B1B1B; }
+
+  </style>
+  <div id="root" data-composition-id="s9" data-width="1080" data-height="1920" data-layout-allow-overlap data-layout-allow-overflow>
+    <div class="s9">
+
+      <div class="comenta">COMENTA</div>
+      <div class="bub"><div class="box"><div class="who">@tú · ahora</div><div class="word"><span class="ch">M</span><span class="ch">A</span><span class="ch">Ñ</span><span class="ch">A</span><span class="ch">N</span><span class="ch">A</span></div></div>
+        <svg class="tail" viewBox="0 0 90 90"><path d="M0 0 L90 0 L10 90Z" fill="#fff" stroke="#1B1B1B" stroke-width="9" stroke-linejoin="round"/><rect x="5" y="-10" width="80" height="16" fill="#fff"/></svg></div>
+      <svg class="heart" viewBox="0 0 100 100"><path d="M50 88 L14 52 Q-4 30 18 14 Q36 4 50 24 Q64 4 82 14 Q104 30 86 52Z" fill="#FF4D5A" stroke="#1B1B1B" stroke-width="7"/></svg>
+      <div class="gift">TE MANDO MI RUTINA</div>
+      <svg class="leo leo" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <g class="leo-body">
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="#4C6FFF"/>
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="none" stroke="#2A3FB0" stroke-width="8"/>
+    <path d="M165 345 L200 392 L235 345" fill="none" stroke="#2A3FB0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="150" cy="430" r="9" fill="#FFD23F"/><circle cx="255" cy="455" r="9" fill="#FFD23F"/><circle cx="110" cy="480" r="7" fill="#FFD23F"/>
+  </g>
+  <rect x="172" y="300" width="56" height="50" rx="14" fill="#E3AE86"/>
+  <g class="leo-head">
+    <circle cx="82" cy="215" r="24" fill="#F0BE96"/><circle cx="318" cy="215" r="24" fill="#F0BE96"/>
+    <circle cx="200" cy="200" r="122" fill="#F6CCA6" stroke="#2B1B12" stroke-width="7"/>
+    <path class="leo-hair" d="M80 190 Q78 70 200 64 Q322 70 320 190 Q300 128 248 136 Q226 104 186 132 Q140 112 118 150 Q96 160 80 190Z" fill="#2E2018"/>
+    <circle cx="130" cy="262" r="20" fill="#FF8C8C" opacity=".35"/><circle cx="270" cy="262" r="20" fill="#FF8C8C" opacity=".35"/>
+    <path class="bags" d="M132 238 Q155 250 178 238 M222 238 Q245 250 268 238" stroke="#B9806A" stroke-width="5" fill="none" stroke-linecap="round" opacity="0"/>
+    <path class="brow-l" d="M128 168 Q152 158 178 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path class="brow-r" d="M222 168 Q248 158 272 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <g class="eyes">
+      <ellipse class="eye eye-l" cx="155" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <ellipse class="eye eye-r" cx="245" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <circle cx="160" cy="205" r="5" fill="#fff"/><circle cx="250" cy="205" r="5" fill="#fff"/>
+    </g>
+    <path class="m m-sad" d="M168 288 Q200 266 232 288" stroke="#2B1B12" stroke-width="8" fill="none" stroke-linecap="round" opacity="0"/>
+    <path class="m m-smile" d="M160 270 Q200 318 240 270 Z" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" stroke-linejoin="round" opacity="1"/>
+    <ellipse class="m m-o" cx="200" cy="284" rx="18" ry="22" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" opacity="0"/>
+    <path class="m m-flat" d="M175 282 L225 282" stroke="#2B1B12" stroke-width="8" stroke-linecap="round" opacity="0"/>
+  </g>
+</svg>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = ".s9 ";
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S + ".leo", { y: 500 }, { y: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.05);
+      tl.fromTo(S + ".bub", { scale: 0, opacity: 0, transformOrigin: "15% 100%" }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 0.2);
+      tl.fromTo(S + ".comenta", { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 1.933);
+      tl.fromTo(S + ".ch", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.12, stagger: 0.1, ease: "power2.out" }, 2.283);
+      tl.fromTo(S + ".word", { scale: 1 }, { scale: 1.06, duration: 0.14, yoyo: true, repeat: 1, transformOrigin: "0% 50%" }, 2.983);
+      tl.fromTo(S + ".heart", { scale: 0, rotation: -30 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(3)" }, 3.133);
+      tl.fromTo(S + ".heart", { scale: 1 }, { scale: 1.15, duration: 0.25, yoyo: true, repeat: 7, ease: "sine.inOut" }, 3.533);
+      tl.fromTo(S + ".gift", { y: 200, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "back.out(2)" }, 3.533);
+      tl.fromTo(S + ".leo .leo-head", { rotation: -6 }, { rotation: 6, duration: 0.5, yoyo: true, repeat: 7, ease: "sine.inOut" }, 0.6);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 1.2);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 3.3);
+
+      window.__timelines["s9"] = tl;
+    })();
+  </script>
+</template>

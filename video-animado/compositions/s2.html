@@ -1,0 +1,113 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s2 { position: absolute; inset: 0; font-family: "Archivo Black", sans-serif; color: #fff; }
+    .s2 svg { overflow: visible; }
+    .s2 .leo .eye, .s2 .leo .leo-head, .s2 .leo .m { transform-box: fill-box; transform-origin: center; }
+    .s2 .tag { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); padding: 18px 46px; border-radius: 999px; font-size: 64px; letter-spacing: 2px; border: 7px solid #1B1B1B; box-shadow: 0 10px 0 #1B1B1B; white-space: nowrap; }
+    .s2 .tag.red { background: #FF4D5A; color: #fff; }
+    .s2 .tag.yellow { background: #FFD23F; color: #1B1B1B; }
+    .s2 .tag.green { background: #3DDC97; color: #1B1B1B; }
+
+    .s2 .leo { position: absolute; left: 30px; top: 470px; width: 560px; height: 700px; }
+    .s2 .name { position: absolute; left: 110px; top: 300px; padding: 14px 40px; background: #FFD23F; color: #1B1B1B; font-size: 80px; border: 7px solid #1B1B1B; border-radius: 26px; box-shadow: 0 10px 0 #1B1B1B; }
+    .s2 .phone { position: absolute; left: 610px; top: 440px; width: 400px; height: 700px; }
+    .s2 .strike { transform: scaleX(0); }
+
+  </style>
+  <div id="root" data-composition-id="s2" data-width="1080" data-height="1920" data-layout-allow-overlap data-layout-allow-overflow>
+    <div class="s2">
+
+      <div class="name">LEO</div>
+      <svg class="leo leo" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <g class="leo-body">
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="#4C6FFF"/>
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="none" stroke="#2A3FB0" stroke-width="8"/>
+    <path d="M165 345 L200 392 L235 345" fill="none" stroke="#2A3FB0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="150" cy="430" r="9" fill="#FFD23F"/><circle cx="255" cy="455" r="9" fill="#FFD23F"/><circle cx="110" cy="480" r="7" fill="#FFD23F"/>
+  </g>
+  <rect x="172" y="300" width="56" height="50" rx="14" fill="#E3AE86"/>
+  <g class="leo-head">
+    <circle cx="82" cy="215" r="24" fill="#F0BE96"/><circle cx="318" cy="215" r="24" fill="#F0BE96"/>
+    <circle cx="200" cy="200" r="122" fill="#F6CCA6" stroke="#2B1B12" stroke-width="7"/>
+    <path class="leo-hair" d="M80 190 Q78 70 200 64 Q322 70 320 190 Q300 128 248 136 Q226 104 186 132 Q140 112 118 150 Q96 160 80 190Z" fill="#2E2018"/>
+    <circle cx="130" cy="262" r="20" fill="#FF8C8C" opacity=".35"/><circle cx="270" cy="262" r="20" fill="#FF8C8C" opacity=".35"/>
+    <path class="bags" d="M132 238 Q155 250 178 238 M222 238 Q245 250 268 238" stroke="#B9806A" stroke-width="5" fill="none" stroke-linecap="round" opacity="1"/>
+    <path class="brow-l" d="M128 168 Q152 158 178 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path class="brow-r" d="M222 168 Q248 158 272 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <g class="eyes">
+      <ellipse class="eye eye-l" cx="155" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <ellipse class="eye eye-r" cx="245" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <circle cx="160" cy="205" r="5" fill="#fff"/><circle cx="250" cy="205" r="5" fill="#fff"/>
+    </g>
+    <path class="m m-sad" d="M168 288 Q200 266 232 288" stroke="#2B1B12" stroke-width="8" fill="none" stroke-linecap="round" opacity="1"/>
+    <path class="m m-smile" d="M160 270 Q200 318 240 270 Z" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" stroke-linejoin="round" opacity="0"/>
+    <ellipse class="m m-o" cx="200" cy="284" rx="18" ry="22" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" opacity="0"/>
+    <path class="m m-flat" d="M175 282 L225 282" stroke="#2B1B12" stroke-width="8" stroke-linecap="round" opacity="0"/>
+  </g>
+</svg>
+      <svg class="phone" viewBox="0 0 320 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="6" width="308" height="548" rx="44" fill="#14161F" stroke="#000" stroke-width="10"/>
+  <rect x="24" y="30" width="272" height="500" rx="28" fill="#232842"/>
+  <rect x="120" y="42" width="80" height="16" rx="8" fill="#0B0C12"/>
+  <g class="row row0"><rect x="40" y="100" width="240" height="68" rx="16" fill="#323A60"/>
+      <text x="62" y="148" font-family="Archivo Black" font-size="38" fill="#fff">6:00</text>
+      <rect x="196" y="120" width="64" height="30" rx="15" fill="#3DDC97"/><circle class="knob" cx="245" cy="135" r="12" fill="#fff"/>
+      <line class="strike" x1="50" y1="134" x2="270" y2="134" stroke="#FF4D5A" stroke-width="10" stroke-linecap="round"/></g><g class="row row1"><rect x="40" y="184" width="240" height="68" rx="16" fill="#323A60"/>
+      <text x="62" y="232" font-family="Archivo Black" font-size="38" fill="#fff">6:05</text>
+      <rect x="196" y="204" width="64" height="30" rx="15" fill="#3DDC97"/><circle class="knob" cx="245" cy="219" r="12" fill="#fff"/>
+      <line class="strike" x1="50" y1="218" x2="270" y2="218" stroke="#FF4D5A" stroke-width="10" stroke-linecap="round"/></g><g class="row row2"><rect x="40" y="268" width="240" height="68" rx="16" fill="#323A60"/>
+      <text x="62" y="316" font-family="Archivo Black" font-size="38" fill="#fff">6:10</text>
+      <rect x="196" y="288" width="64" height="30" rx="15" fill="#3DDC97"/><circle class="knob" cx="245" cy="303" r="12" fill="#fff"/>
+      <line class="strike" x1="50" y1="302" x2="270" y2="302" stroke="#FF4D5A" stroke-width="10" stroke-linecap="round"/></g><g class="row row3"><rect x="40" y="352" width="240" height="68" rx="16" fill="#323A60"/>
+      <text x="62" y="400" font-family="Archivo Black" font-size="38" fill="#fff">6:15</text>
+      <rect x="196" y="372" width="64" height="30" rx="15" fill="#3DDC97"/><circle class="knob" cx="245" cy="387" r="12" fill="#fff"/>
+      <line class="strike" x1="50" y1="386" x2="270" y2="386" stroke="#FF4D5A" stroke-width="10" stroke-linecap="round"/></g><g class="row row4"><rect x="40" y="436" width="240" height="68" rx="16" fill="#323A60"/>
+      <text x="62" y="484" font-family="Archivo Black" font-size="38" fill="#fff">6:20</text>
+      <rect x="196" y="456" width="64" height="30" rx="15" fill="#3DDC97"/><circle class="knob" cx="245" cy="471" r="12" fill="#fff"/>
+      <line class="strike" x1="50" y1="470" x2="270" y2="470" stroke="#FF4D5A" stroke-width="10" stroke-linecap="round"/></g>
+</svg>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = ".s2 ";
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S + ".leo", { y: 500, scaleY: 0.8 }, { y: 0, scaleY: 1, duration: 0.45, ease: "back.out(1.8)", transformOrigin: "50% 100%" }, 0.05);
+      tl.fromTo(S + ".name", { scale: 0, rotation: -12 }, { scale: 1, rotation: -6, duration: 0.35, ease: "back.out(3)" }, 0.35);
+      tl.fromTo(S + ".leo .leo-body", { scaleY: 1, transformOrigin: "50% 100%" }, { scaleY: 1.025, duration: 0.8, yoyo: true, repeat: 1, ease: "sine.inOut" }, 0);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 1.1);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 2.4);
+      tl.fromTo(S + ".phone", { x: 500, rotation: 20 }, { x: 0, rotation: 6, duration: 0.4, ease: "power3.out" }, 0.522);
+      tl.fromTo(S + ".row0", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.16, ease: "power2.out" }, 0.872);
+      tl.fromTo(S + ".row0 .strike", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 1.711);
+      tl.to(S + ".row0 rect:nth-child(3)", { fill: "#6B6F85", duration: 0.1 }, 1.711);
+      tl.to(S + ".row0 .knob", { x: -34, duration: 0.1 }, 1.711);
+      tl.fromTo(S + ".row1", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.16, ease: "power2.out" }, 0.962);
+      tl.fromTo(S + ".row1 .strike", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 1.791);
+      tl.to(S + ".row1 rect:nth-child(3)", { fill: "#6B6F85", duration: 0.1 }, 1.791);
+      tl.to(S + ".row1 .knob", { x: -34, duration: 0.1 }, 1.791);
+      tl.fromTo(S + ".row2", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.16, ease: "power2.out" }, 1.052);
+      tl.fromTo(S + ".row2 .strike", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 1.871);
+      tl.to(S + ".row2 rect:nth-child(3)", { fill: "#6B6F85", duration: 0.1 }, 1.871);
+      tl.to(S + ".row2 .knob", { x: -34, duration: 0.1 }, 1.871);
+      tl.fromTo(S + ".row3", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.16, ease: "power2.out" }, 1.142);
+      tl.fromTo(S + ".row3 .strike", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 1.951);
+      tl.to(S + ".row3 rect:nth-child(3)", { fill: "#6B6F85", duration: 0.1 }, 1.951);
+      tl.to(S + ".row3 .knob", { x: -34, duration: 0.1 }, 1.951);
+      tl.fromTo(S + ".row4", { opacity: 0, x: 40 }, { opacity: 1, x: 0, duration: 0.16, ease: "power2.out" }, 1.232);
+      tl.fromTo(S + ".row4 .strike", { scaleX: 0, transformOrigin: "0% 50%" }, { scaleX: 1, duration: 0.12, ease: "power2.out" }, 2.031);
+      tl.to(S + ".row4 rect:nth-child(3)", { fill: "#6B6F85", duration: 0.1 }, 2.031);
+      tl.to(S + ".row4 .knob", { x: -34, duration: 0.1 }, 2.031);
+      tl.fromTo(S + ".phone", { x: 0 }, { x: 14, duration: 0.05, yoyo: true, repeat: 5 }, 2.111);
+      tl.to(S + ".leo .m", { opacity: 0, duration: 0.08 }, 1.911);
+      tl.fromTo(S + ".leo .m-flat", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(3)" }, 1.971);
+      tl.fromTo(S + ".leo .leo-head", { scaleY: 1, scaleX: 1 }, { scaleY: 0.93, scaleX: 1.05, duration: 0.08, yoyo: true, repeat: 1, ease: "power2.out" }, 1.911);
+      tl.fromTo(S + ".leo .leo-head", { rotation: 0 }, { rotation: -8, duration: 0.4, ease: "power2.out" }, 2.011);
+
+      window.__timelines["s2"] = tl;
+    })();
+  </script>
+</template>

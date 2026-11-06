@@ -1,0 +1,70 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s1 { position: absolute; inset: 0; font-family: "Archivo Black", sans-serif; color: #fff; }
+    .s1 svg { overflow: visible; }
+    .s1 .leo .eye, .s1 .leo .leo-head, .s1 .leo .m { transform-box: fill-box; transform-origin: center; }
+    .s1 .tag { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); padding: 18px 46px; border-radius: 999px; font-size: 64px; letter-spacing: 2px; border: 7px solid #1B1B1B; box-shadow: 0 10px 0 #1B1B1B; white-space: nowrap; }
+    .s1 .tag.red { background: #FF4D5A; color: #fff; }
+    .s1 .tag.yellow { background: #FFD23F; color: #1B1B1B; }
+    .s1 .tag.green { background: #3DDC97; color: #1B1B1B; }
+
+    .s1 .title { position: absolute; left: 60px; right: 60px; top: 230px; text-align: center; line-height: 1.02; }
+    .s1 .title .sm { display:block; font-size: 70px; color: #fff; -webkit-text-stroke: 14px #1B1B1B; paint-order: stroke fill; }
+    .s1 .title .big { display:block; font-size: 118px; color: #FFD23F; -webkit-text-stroke: 18px #1B1B1B; paint-order: stroke fill; }
+    .s1 .t-b { opacity: 0; }
+    .s1 .t-b .big { color: #8FA8FF; }
+    .s1 .clock { position: absolute; left: 330px; top: 560px; width: 420px; height: 420px; }
+    .s1 .bed { position: absolute; left: 90px; top: 880px; width: 900px; height: 380px; }
+    .s1 .zzz { position: absolute; left: 760px; top: 860px; font-size: 64px; color: #8FA8FF; -webkit-text-stroke: 10px #1B1B1B; paint-order: stroke fill; }
+    .s1 .moon { position: absolute; left: 820px; top: 520px; width: 150px; height: 150px; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="s1" data-width="1080" data-height="1920" data-layout-allow-overlap data-layout-allow-overflow>
+    <div class="s1">
+
+      <div class="title t-a"><span class="sm">TU PROBLEMA</span><span class="big">NO ES LA MAÑANA</span></div>
+      <div class="title t-b"><span class="sm">ES LA</span><span class="big">NOCHE ANTERIOR</span></div>
+      <svg class="moon" viewBox="0 0 100 100"><path d="M70 10 A42 42 0 1 0 90 72 A34 34 0 1 1 70 10Z" fill="#FFE9A8" stroke="#1B1B1B" stroke-width="5"/></svg>
+      <svg class="clock" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <g class="bells"><circle cx="70" cy="70" r="42" fill="#FF4D5A" stroke="#1B1B1B" stroke-width="8"/><circle cx="230" cy="70" r="42" fill="#FF4D5A" stroke="#1B1B1B" stroke-width="8"/></g>
+  <path d="M80 250 L55 290 M220 250 L245 290" stroke="#1B1B1B" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="150" cy="165" r="118" fill="#FF4D5A" stroke="#1B1B1B" stroke-width="10"/>
+  <circle cx="150" cy="165" r="92" fill="#FFF6E5" stroke="#1B1B1B" stroke-width="6"/>
+  <text x="150" y="190" text-anchor="middle" font-family="Archivo Black" font-size="66" fill="#1B1B1B">6:00</text>
+</svg>
+      <svg class="bed" viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="40" width="40" height="320" rx="14" fill="#7A4B2A" stroke="#1B1B1B" stroke-width="8"/>
+        <rect x="30" y="250" width="840" height="70" rx="20" fill="#9A6236" stroke="#1B1B1B" stroke-width="8"/>
+        <g class="lump">
+          <path d="M60 255 Q80 130 260 140 Q360 80 520 120 Q760 120 860 255Z" fill="#4C6FFF" stroke="#1B1B1B" stroke-width="8"/>
+          <path d="M260 160 Q420 180 560 150 M600 170 Q720 190 820 230" stroke="#2A3FB0" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <path d="M70 150 Q60 90 130 80 Q190 70 210 130 Q170 120 140 140 Q110 130 70 150Z" fill="#2E2018" stroke="#1B1B1B" stroke-width="6"/>
+          <rect x="60" y="120" width="190" height="80" rx="38" fill="#F4F1EA" stroke="#1B1B1B" stroke-width="8" transform="rotate(-8 155 160)"/>
+        </g>
+      </svg>
+      <div class="zzz">Z<span style="font-size:44px">z</span></div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = ".s1 ";
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S + ".clock", { rotation: -9 }, { rotation: 9, duration: 0.06, yoyo: true, repeat: 23, ease: "none", transformOrigin: "50% 60%" }, 0);
+      tl.fromTo(S + ".clock", { scale: 1 }, { scale: 1.06, duration: 0.18, yoyo: true, repeat: 7, ease: "sine.inOut", transformOrigin: "50% 60%" }, 0);
+      tl.fromTo(S + ".lump", { y: 0 }, { y: -10, duration: 0.25, yoyo: true, repeat: 3, ease: "sine.inOut" }, 0.2);
+      tl.fromTo(S + ".lump", { scaleX: 1 }, { scaleX: 1.03, duration: 0.14, yoyo: true, repeat: 1, transformOrigin: "10% 100%" }, 0.9);
+      tl.fromTo(S + ".zzz", { opacity: 0, y: 20 }, { opacity: 1, y: -40, duration: 1.2, ease: "power1.out" }, 0.3);
+      tl.to(S + ".zzz", { opacity: 0, duration: 0.3 }, 1.5);
+      tl.fromTo(S + ".t-a .big", { scale: 1 }, { scale: 1.06, duration: 0.12, yoyo: true, repeat: 1, ease: "power2.out" }, 0.25);
+      tl.to(S + ".t-a", { y: -60, opacity: 0, duration: 0.18, ease: "power3.in" }, 1.624);
+      tl.fromTo(S + ".t-b", { y: 80, opacity: 0, scale: 0.9 }, { y: 0, opacity: 1, scale: 1, duration: 0.32, ease: "back.out(2.2)" }, 1.804);
+      tl.to(S + ".clock", { x: -140, y: 40, scale: 0.78, duration: 0.4, ease: "power3.inOut" }, 1.804);
+      tl.fromTo(S + ".moon", { opacity: 0, scale: 0.4, rotation: -40 }, { opacity: 1, scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 1.9040000000000001);
+
+      window.__timelines["s1"] = tl;
+    })();
+  </script>
+</template>

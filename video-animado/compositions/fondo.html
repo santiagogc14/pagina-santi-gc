@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .bg { position: absolute; inset: 0; }
+    .bg .lay { position: absolute; inset: 0; }
+    .bg .night { background: linear-gradient(180deg, #070B24 0%, #141A4A 55%, #232A6B 100%); }
+    .bg .dawn { background: linear-gradient(180deg, #3A3F9E 0%, #C46A9A 45%, #FF9A6B 75%, #FFD27A 100%); opacity: 0; }
+    .bg .day { background: linear-gradient(180deg, #5FB8FF 0%, #9FD7FF 50%, #FFE7A3 100%); opacity: 0; }
+    .bg .sunball { position: absolute; left: 340px; top: 1980px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, #FFF3B0 0%, #FFD23F 55%, rgba(255,210,63,0) 72%); }
+    .bg .stars { position: absolute; inset: 0; width: 1080px; height: 1920px; }
+    .bg .floor { position: absolute; left: 0; right: 0; top: 1360px; bottom: 0; background: rgba(0,0,0,.22); }
+  </style>
+  <div id="root" data-composition-id="fondo" data-width="1080" data-height="1920">
+    <div class="bg">
+      <div class="lay night"></div>
+      <div class="lay dawn"></div>
+      <div class="lay day"></div>
+      <div class="sunball"></div>
+      <svg class="stars" viewBox="0 0 1080 1920"><circle class="st" cx="663" cy="308" r="4" fill="#fff"/><circle class="st" cx="98" cy="148" r="5" fill="#fff"/><circle class="st" cx="192" cy="748" r="5" fill="#fff"/><circle class="st" cx="118" cy="1039" r="3" fill="#fff"/><circle class="st" cx="76" cy="176" r="4" fill="#fff"/><circle class="st" cx="856" cy="143" r="3" fill="#fff"/><circle class="st" cx="185" cy="1128" r="4" fill="#fff"/><circle class="st" cx="121" cy="1158" r="2" fill="#fff"/><circle class="st" cx="457" cy="1291" r="5" fill="#fff"/><circle class="st" cx="126" cy="1181" r="5" fill="#fff"/><circle class="st" cx="812" cy="101" r="3" fill="#fff"/><circle class="st" cx="95" cy="1140" r="3" fill="#fff"/><circle class="st" cx="593" cy="858" r="3" fill="#fff"/><circle class="st" cx="241" cy="1169" r="3" fill="#fff"/><circle class="st" cx="370" cy="211" r="5" fill="#fff"/><circle class="st" cx="384" cy="762" r="2" fill="#fff"/><circle class="st" cx="128" cy="1155" r="2" fill="#fff"/><circle class="st" cx="421" cy="1016" r="5" fill="#fff"/><circle class="st" cx="875" cy="643" r="4" fill="#fff"/><circle class="st" cx="928" cy="740" r="3" fill="#fff"/><circle class="st" cx="508" cy="368" r="3" fill="#fff"/><circle class="st" cx="167" cy="1176" r="3" fill="#fff"/><circle class="st" cx="1075" cy="1013" r="3" fill="#fff"/><circle class="st" cx="919" cy="589" r="5" fill="#fff"/><circle class="st" cx="149" cy="241" r="5" fill="#fff"/><circle class="st" cx="856" cy="337" r="3" fill="#fff"/><circle class="st" cx="311" cy="1001" r="4" fill="#fff"/><circle class="st" cx="80" cy="1368" r="2" fill="#fff"/><circle class="st" cx="642" cy="696" r="3" fill="#fff"/><circle class="st" cx="1017" cy="1187" r="4" fill="#fff"/><circle class="st" cx="140" cy="191" r="3" fill="#fff"/><circle class="st" cx="970" cy="1427" r="2" fill="#fff"/><circle class="st" cx="124" cy="1497" r="3" fill="#fff"/><circle class="st" cx="912" cy="582" r="4" fill="#fff"/><circle class="st" cx="710" cy="46" r="4" fill="#fff"/><circle class="st" cx="727" cy="344" r="5" fill="#fff"/><circle class="st" cx="239" cy="1011" r="2" fill="#fff"/><circle class="st" cx="446" cy="588" r="3" fill="#fff"/><circle class="st" cx="507" cy="814" r="4" fill="#fff"/><circle class="st" cx="1016" cy="165" r="3" fill="#fff"/><circle class="st" cx="919" cy="822" r="5" fill="#fff"/><circle class="st" cx="569" cy="280" r="4" fill="#fff"/><circle class="st" cx="570" cy="1446" r="4" fill="#fff"/><circle class="st" cx="734" cy="1398" r="4" fill="#fff"/><circle class="st" cx="472" cy="309" r="2" fill="#fff"/><circle class="st" cx="360" cy="309" r="3" fill="#fff"/><circle class="st" cx="477" cy="24" r="4" fill="#fff"/><circle class="st" cx="373" cy="538" r="3" fill="#fff"/><circle class="st" cx="8" cy="298" r="4" fill="#fff"/><circle class="st" cx="756" cy="1248" r="5" fill="#fff"/><circle class="st" cx="652" cy="257" r="5" fill="#fff"/><circle class="st" cx="110" cy="935" r="5" fill="#fff"/><circle class="st" cx="803" cy="815" r="4" fill="#fff"/><circle class="st" cx="807" cy="212" r="4" fill="#fff"/><circle class="st" cx="820" cy="127" r="3" fill="#fff"/><circle class="st" cx="137" cy="427" r="4" fill="#fff"/><circle class="st" cx="332" cy="225" r="3" fill="#fff"/><circle class="st" cx="107" cy="209" r="2" fill="#fff"/><circle class="st" cx="309" cy="1098" r="2" fill="#fff"/><circle class="st" cx="744" cy="1256" r="2" fill="#fff"/><circle class="st" cx="144" cy="425" r="5" fill="#fff"/><circle class="st" cx="770" cy="304" r="3" fill="#fff"/><circle class="st" cx="711" cy="1233" r="3" fill="#fff"/><circle class="st" cx="971" cy="251" r="2" fill="#fff"/><circle class="st" cx="999" cy="954" r="4" fill="#fff"/><circle class="st" cx="990" cy="638" r="2" fill="#fff"/><circle class="st" cx="295" cy="209" r="3" fill="#fff"/><circle class="st" cx="542" cy="980" r="3" fill="#fff"/><circle class="st" cx="1057" cy="47" r="3" fill="#fff"/><circle class="st" cx="740" cy="300" r="5" fill="#fff"/></svg>
+      <div class="floor"></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(".bg .st", { opacity: 0.25 }, { opacity: 1, duration: 0.9, yoyo: true, repeat: 25, stagger: { each: 0.07, from: "random" }, ease: "sine.inOut" }, 0);
+      tl.fromTo(".bg .dawn", { opacity: 0 }, { opacity: 1, duration: 3.5, ease: "sine.inOut" }, 24.0);
+      tl.to(".bg .stars", { opacity: 0, duration: 3 }, 24.0);
+      tl.fromTo(".bg .sunball", { y: 0 }, { y: -1150, duration: 12, ease: "sine.out" }, 24.0);
+      tl.fromTo(".bg .day", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power2.out" }, 41.7);
+      tl.to(".bg .sunball", { y: -1750, scale: 1.4, duration: 0.8, ease: "power2.out" }, 41.7);
+      window.__timelines["fondo"] = tl;
+    })();
+  </script>
+</template>

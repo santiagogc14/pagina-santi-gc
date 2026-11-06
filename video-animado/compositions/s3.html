@@ -1,0 +1,99 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    .s3 { position: absolute; inset: 0; font-family: "Archivo Black", sans-serif; color: #fff; }
+    .s3 svg { overflow: visible; }
+    .s3 .leo .eye, .s3 .leo .leo-head, .s3 .leo .m { transform-box: fill-box; transform-origin: center; }
+    .s3 .tag { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); padding: 18px 46px; border-radius: 999px; font-size: 64px; letter-spacing: 2px; border: 7px solid #1B1B1B; box-shadow: 0 10px 0 #1B1B1B; white-space: nowrap; }
+    .s3 .tag.red { background: #FF4D5A; color: #fff; }
+    .s3 .tag.yellow { background: #FFD23F; color: #1B1B1B; }
+    .s3 .tag.green { background: #3DDC97; color: #1B1B1B; }
+
+    .s3 .room { position: absolute; inset: 0; background: radial-gradient(circle at 50% 46%, rgba(80,140,255,.0) 0%, rgba(5,8,25,.55) 65%); }
+    .s3 .glow { position: absolute; left: 140px; top: 380px; width: 800px; height: 800px; border-radius: 50%; background: radial-gradient(circle, rgba(90,170,255,.75) 0%, rgba(90,170,255,.0) 65%); }
+    .s3 .leo { position: absolute; left: 280px; top: 400px; width: 520px; height: 650px; }
+    .s3 .phone { position: absolute; left: 430px; top: 850px; width: 220px; height: 380px; }
+    .s3 .clockd { position: absolute; left: 700px; top: 400px; padding: 10px 26px; background: #0B0C12; border: 6px solid #FF4D5A; border-radius: 20px; font-family: "Archivo Black"; font-size: 70px; color: #FF4D5A; }
+    .s3 .meter { position: absolute; left: 140px; top: 400px; width: 800px; opacity: 0; }
+    .s3 .meter .lbl { font-size: 54px; text-align: center; -webkit-text-stroke: 10px #1B1B1B; paint-order: stroke fill; }
+    .s3 .meter .bar { margin-top: 14px; height: 76px; border: 8px solid #1B1B1B; border-radius: 40px; background: #232842; overflow: hidden; box-shadow: 0 8px 0 #1B1B1B; }
+    .s3 .meter .fill { width: 100%; height: 100%; background: linear-gradient(90deg,#8FA8FF,#B79CFF); transform-origin: 0% 50%; }
+    .s3 .rays { position: absolute; left: 290px; top: 700px; width: 500px; height: 420px; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="s3" data-width="1080" data-height="1920" data-layout-allow-overlap data-layout-allow-overflow>
+    <div class="s3">
+
+      <div class="glow"></div>
+      <div class="room"></div>
+      <svg class="rays" viewBox="0 0 500 420"><g stroke="#5AB0FF" stroke-width="16" stroke-linecap="round"><line x1="250" y1="400" x2="60" y2="40"/><line x1="250" y1="400" x2="250" y2="10"/><line x1="250" y1="400" x2="440" y2="40"/><line x1="250" y1="400" x2="150" y2="20"/><line x1="250" y1="400" x2="350" y2="20"/></g></svg>
+      <svg class="leo leo" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <g class="leo-body">
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="#4C6FFF"/>
+    <path d="M70 500 Q70 340 200 340 Q330 340 330 500Z" fill="none" stroke="#2A3FB0" stroke-width="8"/>
+    <path d="M165 345 L200 392 L235 345" fill="none" stroke="#2A3FB0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="150" cy="430" r="9" fill="#FFD23F"/><circle cx="255" cy="455" r="9" fill="#FFD23F"/><circle cx="110" cy="480" r="7" fill="#FFD23F"/>
+  </g>
+  <rect x="172" y="300" width="56" height="50" rx="14" fill="#E3AE86"/>
+  <g class="leo-head">
+    <circle cx="82" cy="215" r="24" fill="#F0BE96"/><circle cx="318" cy="215" r="24" fill="#F0BE96"/>
+    <circle cx="200" cy="200" r="122" fill="#F6CCA6" stroke="#2B1B12" stroke-width="7"/>
+    <path class="leo-hair" d="M80 190 Q78 70 200 64 Q322 70 320 190 Q300 128 248 136 Q226 104 186 132 Q140 112 118 150 Q96 160 80 190Z" fill="#2E2018"/>
+    <circle cx="130" cy="262" r="20" fill="#FF8C8C" opacity=".35"/><circle cx="270" cy="262" r="20" fill="#FF8C8C" opacity=".35"/>
+    <path class="bags" d="M132 238 Q155 250 178 238 M222 238 Q245 250 268 238" stroke="#B9806A" stroke-width="5" fill="none" stroke-linecap="round" opacity="0"/>
+    <path class="brow-l" d="M128 168 Q152 158 178 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <path class="brow-r" d="M222 168 Q248 158 272 168" stroke="#2E2018" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <g class="eyes">
+      <ellipse class="eye eye-l" cx="155" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <ellipse class="eye eye-r" cx="245" cy="212" rx="15" ry="19" fill="#1B1B1B"/>
+      <circle cx="160" cy="205" r="5" fill="#fff"/><circle cx="250" cy="205" r="5" fill="#fff"/>
+    </g>
+    <path class="m m-sad" d="M168 288 Q200 266 232 288" stroke="#2B1B12" stroke-width="8" fill="none" stroke-linecap="round" opacity="0"/>
+    <path class="m m-smile" d="M160 270 Q200 318 240 270 Z" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" stroke-linejoin="round" opacity="0"/>
+    <ellipse class="m m-o" cx="200" cy="284" rx="18" ry="22" fill="#7A2E2E" stroke="#2B1B12" stroke-width="7" opacity="1"/>
+    <path class="m m-flat" d="M175 282 L225 282" stroke="#2B1B12" stroke-width="8" stroke-linecap="round" opacity="0"/>
+  </g>
+</svg>
+      <svg class="phone" viewBox="0 0 320 560" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="6" width="308" height="548" rx="44" fill="#14161F" stroke="#000" stroke-width="10"/>
+  <rect x="24" y="30" width="272" height="500" rx="28" fill="#232842"/>
+  <rect x="120" y="42" width="80" height="16" rx="8" fill="#0B0C12"/>
+  <rect x="24" y="30" width="272" height="500" rx="28" fill="#6FC3FF"/><rect x="50" y="90" width="220" height="140" rx="18" fill="#fff" opacity=".85"/><rect x="50" y="250" width="220" height="40" rx="12" fill="#fff" opacity=".7"/><rect x="50" y="305" width="160" height="40" rx="12" fill="#fff" opacity=".7"/><rect x="50" y="360" width="200" height="140" rx="18" fill="#fff" opacity=".85"/>
+</svg>
+      <div class="tag red">ERROR 1</div>
+      <div class="clockd"><span class="cd">12:41</span></div>
+      <div class="meter"><div class="lbl">MELATONINA</div><div class="bar"><div class="fill"></div></div></div>
+
+    </div>
+  </div>
+  <script>
+    (function () {
+      const S = ".s3 ";
+      const tl = gsap.timeline({ paused: true });
+
+      tl.fromTo(S + ".tag", { scale: 2.2, opacity: 0, rotation: -8 }, { scale: 1, opacity: 1, rotation: -3, duration: 0.3, ease: "back.out(2.5)" }, 0.03);
+      tl.fromTo(S + ".leo", { y: 120, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.05);
+      tl.fromTo(S + ".phone", { y: 300, rotation: -10 }, { y: 0, rotation: 0, duration: 0.4, ease: "back.out(1.6)" }, 0.15);
+      tl.fromTo(S + ".glow", { opacity: 0.4, scale: 0.9 }, { opacity: 1, scale: 1.05, duration: 0.5, yoyo: true, repeat: 11, ease: "sine.inOut" }, 0);
+      tl.fromTo(S + ".leo .eye", { scale: 1 }, { scale: 1.25, duration: 0.3, ease: "back.out(3)" }, 0.4);
+      tl.fromTo(S + ".clockd", { scale: 0 }, { scale: 1, duration: 0.3, ease: "back.out(3)" }, 0.5);
+      const cd = { m: 41 };
+      tl.to(cd, { m: 67, duration: 1.6, ease: "power2.in", onUpdate: () => {
+        const m = Math.round(cd.m); const h = m >= 60 ? 1 : 12; const mm = m % 60;
+        document.querySelector(S + ".cd").textContent = h + ":" + String(mm).padStart(2, "0");
+      } }, 0.6);
+      tl.fromTo(S + ".clockd", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 5 }, 2.2);
+      // línea 4: la luz frena la melatonina
+      tl.to(S + ".tag, " + S + ".clockd", { y: -40, opacity: 0, duration: 0.25, ease: "power2.in" }, 2.508);
+      tl.fromTo(S + ".meter", { opacity: 0, y: -40 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, 2.658);
+      tl.fromTo(S + ".rays", { opacity: 0, scale: 0.5, transformOrigin: "50% 100%" }, { opacity: 0.9, scale: 1, duration: 0.35, ease: "power3.out" }, 3.7580000000000005);
+      tl.fromTo(S + ".rays", { opacity: 0.9 }, { opacity: 0.5, duration: 0.2, yoyo: true, repeat: 9 }, 4.158);
+      tl.fromTo(S + ".meter .fill", { scaleX: 0.92 }, { scaleX: 0.14, duration: 1.6, ease: "power2.inOut" }, 3.958);
+      tl.to(S + ".meter .fill", { background: "linear-gradient(90deg,#FF4D5A,#FF8A65)", duration: 0.6 }, 4.758);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 1.6);
+      tl.fromTo(S + ".leo .eye", { scaleY: 1 }, { scaleY: 0.1, duration: 0.07, yoyo: true, repeat: 1, ease: "power1.inOut" }, 3.1);
+
+      window.__timelines["s3"] = tl;
+    })();
+  </script>
+</template>
